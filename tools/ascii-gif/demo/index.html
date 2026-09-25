@@ -5,42 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
   </head>
   <body>
     <main>
       <h1>ASCII GIF</h1>
-      <p class="lead">GIF 先合成完整画面，再收成灰度网格，按原帧时长画成 0 和 1。换色和条带位移都不重新解码。</p>
+      <p class="lead">GIF 先合成完整画面，再收成灰度网格，按原帧时长画成 0 和 1。换色不重新解码。</p>
       <p class="sources"><a href="./">人物夹具</a> · <a href="?gif=../fixtures/disposal.gif">处置测试</a></p>
-      <div class="panels">
-        <section>
-          <h2>合成灰度</h2>
-          <div class="preview relative">
-            <canvas id="gray" class="absolute inset"></canvas>
-          </div>
-        </section>
-        <section class="character">
-          <h2>字符</h2>
-          <div id="stage" class="stage relative">
-            <canvas id="bars" class="absolute inset"></canvas>
-            <canvas id="ascii" class="absolute inset"></canvas>
-          </div>
-        </section>
-      </div>
       <div class="controls">
         <button id="choose-gif" type="button">选择 GIF</button>
         <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
         <label>列数 <input id="columns" type="range" min="40" max="160" value="110" /></label>
         <label>帧 <input id="frame" type="range" min="0" max="0" value="0" /></label>
-        <label>位移 <input id="shift" type="range" min="0" max="48" value="16" /></label>
         <label>颜色 <input id="color" type="color" value="#000013" /></label>
-        <label><input id="bands" type="checkbox" /> 条带裁切</label>
         <button id="pause" type="button">暂停</button>
         <button id="light-mass" type="button">白块</button>
         <button id="dark-mass" type="button">黑块</button>
       </div>
+      <div class="panels">
+        <section>
+          <h2>合成灰度</h2>
+          <div class="preview relative clip">
+            <canvas id="gray" class="absolute inset no-pointer"></canvas>
+          </div>
+        </section>
+        <section class="character">
+          <h2>字符</h2>
+          <div id="stage" class="stage relative clip">
+            <canvas id="ascii" class="absolute inset no-pointer"></canvas>
+          </div>
+        </section>
+      </div>
       <p id="status" role="status"></p>
     </main>
-    <script type="module" src="./main.mjs"></script>
+    <script type="module" src="./main.mjs?v=4"></script>
   </body>
 </html>

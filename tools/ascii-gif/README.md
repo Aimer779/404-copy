@@ -1,6 +1,6 @@
 # ASCII GIF
 
-把 GIF 收成可复用的字符动画。模块自己完成解码、帧合成、灰度取样和 Canvas 绘制。页面只提供时钟、颜色，以及要共用的裁切条带。
+把 GIF 收成可复用的字符动画。模块自己完成解码、帧合成、灰度取样和 Canvas 绘制。页面提供时钟和颜色。
 
 运行时不请求 CDN。`gifuct-js` 的发布入口是 CommonJS，浏览器用的是已经打好的 `vendor/gifuct.mjs`。
 
@@ -38,13 +38,10 @@ const player = new AsciiPlayer(canvas, clip, {
 player.sync({
   time: gifTimeMs,
   color: inkColor,
-  bands: [{ x, y, width, height, shift }],
 })
 ```
 
-`sync` 适合放进页面已有的 `requestAnimationFrame`。`time` 决定 GIF 帧，轮廓和故障可以在同一帧里用更高的频率改 `bands`。改 `color` 只改绘制颜色。
-
-`bands` 用 Canvas 元素左上角为原点的 CSS 像素。`shift` 是这一条的横向位移。人物和外面的块要用同一组矩形和同一组位移。不传 `bands` 时不裁切。
+`sync` 适合放进页面已有的 `requestAnimationFrame`。`time` 决定 GIF 帧。改 `color` 只改绘制颜色。
 
 行数按 `round(列数 × 画面高 / 画面宽 × 字符宽高比)` 计算。画面是不透明内容的范围，周围的空白不占列数。字符宽高比是 `0` 的进宽除以行高。省略时，播放器会按 `font` 测量。桌面可以先试 100–120 列，窄屏试 50–70 列。
 
@@ -79,4 +76,4 @@ python test/make_fixtures.py
 
 主页面目前不引用这个模块。`tests/verify.py` 仍要求文档里没有 `canvas`，参考角色的 GIF 也还没放进 `assets/`。
 
-接入时在 `.data-mass` 中加一层 Canvas，放在色块之上、故障线之下。在现有 `paintShape` 算出条带后，把同一组 `top/bottom/left/right` 和横向位移填进 `bands`，颜色用当前 `--ink`。人物换帧走 GIF 的 `delay`，轮廓和故障继续走原来的 16 秒时钟。
+接入时在 `.data-mass` 中加一层 Canvas，放在色块之上、故障线之下。颜色用当前 `--ink`。人物换帧走 GIF 的 `delay`，轮廓和故障继续走原来的 16 秒时钟。

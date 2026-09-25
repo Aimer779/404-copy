@@ -22,6 +22,8 @@ a { color: inherit; }
 .relative { position: relative; }
 .absolute { position: absolute; }
 .inset { inset: 0; }
+.clip { overflow: hidden; }
+.no-pointer { pointer-events: none; }
 .preview {
   aspect-ratio: 3 / 4;
   background: repeating-conic-gradient(#2a2a2a 0% 25%, #171717 0% 50%) 0 0 / 16px 16px;
