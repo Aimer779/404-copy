@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A pixel glitch 404 page experiment." />
+    <title>404 / Signal Lost</title>
+    <link rel="icon" href="data:," />
+    <link rel="preload" href="assets/fonts/404-display.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="assets/fonts/VT323-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="error-page relative overflow-clip" data-mode="dark" data-glitch="0" aria-labelledby="error-title">
+      <div class="composition absolute overflow-visible" aria-hidden="true">
+        <div class="data-mass absolute layer-0">
+          <div class="mass-fallback absolute"></div>
+        </div>
+        <div class="signal-field absolute layer-1"></div>
+        <div class="fragments absolute layer-1">
+          <i class="fragment absolute"></i><i class="fragment absolute"></i>
+        </div>
+      </div>
+      <section class="error-panel absolute layer-2">
+        <h1 id="error-title" class="error-code relative"><span class="code-source">404</span><span class="code-echo echo-red absolute" aria-hidden="true">404</span><span class="code-echo echo-blue absolute" aria-hidden="true">404</span></h1>
+        <button class="reconnect relative" type="button" aria-label="重新连接 RECONNECT">
+          <span class="button-label">RECONNECT</span>
+        </button>
+        <p class="status absolute" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

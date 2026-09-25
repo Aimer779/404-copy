@@ -1,0 +1,10 @@
+node_modules/
+
+# Local reference media. Keep these on disk; do not publish them yet.
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.webm

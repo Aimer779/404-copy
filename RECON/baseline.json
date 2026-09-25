@@ -1,0 +1,89 @@
+{
+  "dark": {
+    ".data-mass": {
+      "x": 192,
+      "y": 60,
+      "width": 896,
+      "height": 600,
+      "font": "16px \"Courier New\", Consolas, monospace",
+      "color": "rgb(244, 243, 237)",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    ".error-code": {
+      "x": 504.609375,
+      "y": 361.171875,
+      "width": 270.78125,
+      "height": 149.75,
+      "font": "900 192px / 149.76px \"Courier New\", Consolas, monospace",
+      "color": "rgb(7, 7, 15)",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    ".reconnect": {
+      "x": 576.921875,
+      "y": 547.109375,
+      "width": 126.140625,
+      "height": 32,
+      "font": "900 11.52px \"Courier New\", Consolas, monospace",
+      "color": "rgb(9, 9, 16)",
+      "background": "rgb(241, 214, 45)"
+    }
+  },
+  "inverse": {
+    ".data-mass": {
+      "x": 192,
+      "y": 60,
+      "width": 896,
+      "height": 600,
+      "font": "16px \"Courier New\", Consolas, monospace",
+      "color": "rgb(244, 243, 237)",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    ".error-code": {
+      "x": 504.609375,
+      "y": 361.171875,
+      "width": 270.78125,
+      "height": 149.75,
+      "font": "900 192px / 149.76px \"Courier New\", Consolas, monospace",
+      "color": "rgb(244, 243, 237)",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    ".reconnect": {
+      "x": 576.921875,
+      "y": 547.109375,
+      "width": 126.140625,
+      "height": 32,
+      "font": "900 11.52px \"Courier New\", Consolas, monospace",
+      "color": "rgb(9, 9, 16)",
+      "background": "rgb(8, 8, 17)"
+    }
+  },
+  "electric": {
+    ".data-mass": {
+      "x": 192,
+      "y": 60,
+      "width": 896,
+      "height": 600,
+      "font": "16px \"Courier New\", Consolas, monospace",
+      "color": "rgb(244, 243, 237)",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    ".error-code": {
+      "x": 504.609375,
+      "y": 361.171875,
+      "width": 270.78125,
+      "height": 149.75,
+      "font": "900 192px / 149.76px \"Courier New\", Consolas, monospace",
+      "color": "rgb(8, 8, 17)",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    ".reconnect": {
+      "x": 576.921875,
+      "y": 547.109375,
+      "width": 126.140625,
+      "height": 32,
+      "font": "900 11.52px \"Courier New\", Consolas, monospace",
+      "color": "rgb(9, 9, 16)",
+      "background": "rgb(241, 214, 45)"
+    }
+  }
+}

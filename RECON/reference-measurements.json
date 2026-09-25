@@ -1,0 +1,135 @@
+{
+  "method": "Approximate visual bounds; colors sampled away from subtitles and glyphs. Not source DOM values.",
+  "frames": [
+    {
+      "frame": 6,
+      "backgroundSample": {
+        "background": [
+          0,
+          0,
+          19
+        ]
+      },
+      "sourceSize": [
+        1280,
+        720
+      ],
+      "contentY": [
+        30,
+        690
+      ]
+    },
+    {
+      "frame": 18,
+      "backgroundSample": {
+        "background": [
+          243,
+          243,
+          243
+        ]
+      },
+      "sourceSize": [
+        1280,
+        720
+      ],
+      "contentY": [
+        30,
+        690
+      ]
+    },
+    {
+      "frame": 24,
+      "backgroundSample": {
+        "background": [
+          1,
+          0,
+          19
+        ]
+      },
+      "sourceSize": [
+        1280,
+        720
+      ],
+      "contentY": [
+        30,
+        690
+      ]
+    },
+    {
+      "frame": 30,
+      "backgroundSample": {
+        "background": [
+          0,
+          0,
+          18
+        ]
+      },
+      "sourceSize": [
+        1280,
+        720
+      ],
+      "contentY": [
+        30,
+        690
+      ]
+    },
+    {
+      "frame": 48,
+      "backgroundSample": {
+        "background": [
+          243,
+          243,
+          243
+        ]
+      },
+      "sourceSize": [
+        1280,
+        720
+      ],
+      "contentY": [
+        30,
+        690
+      ]
+    },
+    {
+      "frame": 72,
+      "backgroundSample": {
+        "background": [
+          7,
+          28,
+          233
+        ]
+      },
+      "sourceSize": [
+        1280,
+        720
+      ],
+      "contentY": [
+        30,
+        690
+      ]
+    }
+  ],
+  "frame006": {
+    "massBounds": [
+      275,
+      95,
+      1050,
+      633
+    ],
+    "digitInkBounds": [
+      532,
+      292,
+      744,
+      391
+    ],
+    "buttonLabelBounds": [
+      591,
+      429,
+      685,
+      451
+    ]
+  },
+  "mapping": "strip y = (source y - 30) / 660; x = source x / 1280",
+  "intentionalDifference": "Title/button retain the reference screen position at 1280x720; background silhouette expands vertically into removed letterbox space."
+}

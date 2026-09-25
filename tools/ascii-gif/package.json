@@ -1,0 +1,14 @@
+{
+  "name": "ascii-gif",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "fixtures": "python test/make_fixtures.py",
+    "test": "node --test test/composite.test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "gifuct-js": "2.1.2"
+  }
+}
