@@ -6,6 +6,14 @@ const stage = document.querySelector('#stage')
 const columnsInput = document.querySelector('#columns')
 const frameInput = document.querySelector('#frame')
 const colorInput = document.querySelector('#color')
+const fontSelect = document.querySelector('#font')
+const fonts = {
+  consolas: 'Consolas, ui-monospace, monospace',
+  cascadia: '"Cascadia Mono", Consolas, ui-monospace, monospace',
+  courier: '"Courier New", ui-monospace, monospace',
+  lucida: '"Lucida Console", ui-monospace, monospace',
+  vt323: '"VT323", ui-monospace, monospace',
+}
 const pauseButton = document.querySelector('#pause')
 const status = document.querySelector('#status')
 const grayCtx = gray.getContext('2d')
@@ -25,10 +33,21 @@ let last = performance.now()
 let paused = reduced.matches
 let scrubbing = false
 
+function currentFont() {
+  return fonts[fontSelect.value] || fonts.consolas
+}
+
+async function applyFont() {
+  if (fontSelect.value === 'vt323') await document.fonts.load('100px VT323')
+  player?.setFont(currentFont())
+}
+
 function applyTheme(next) {
   theme = next
   stage.style.background = theme.mass
   colorInput.value = theme.ink
+  document.querySelector('#light-mass').classList.toggle('is-on', next === themes.light)
+  document.querySelector('#dark-mass').classList.toggle('is-on', next === themes.dark)
 }
 
 function drawGray(frame) {
@@ -65,6 +84,8 @@ function render() {
   player.sync({ time: gifTime, color: colorInput.value })
   const grid = player.grid()
   if (!scrubbing && frameInput.value !== String(index)) frameInput.value = String(index)
+  document.querySelector('#columns-value').textContent = String(grid.columns)
+  document.querySelector('#frame-value').textContent = `${index + 1}/${clip.frames.length}`
   const partial = clip.frames.filter(item => item.dims.width < clip.width || item.dims.height < clip.height).length
   const stored = clip.bytes < 1024 ? `${clip.bytes} B` : `${Math.round(clip.bytes / 1024)} KB`
   const detail = `${sourceName} · 帧 ${index + 1}/${clip.frames.length} · 本帧 ${frame.delay} ms · 列 ${grid.columns} × 行 ${grid.rows} · 灰度 ${stored} · 素材 ${clip.width}×${clip.height} · 局部帧 ${partial}`
@@ -80,9 +101,9 @@ function useClip(next, name) {
   const box = clip.content ?? { width: clip.width, height: clip.height }
   document.querySelector('.preview').style.aspectRatio = `${box.width} / ${box.height}`
   player = new AsciiPlayer(ascii, clip, {
-    font: '"VT323", ui-monospace, monospace',
+    font: currentFont(),
     columns: Number(columnsInput.value),
-    charAspect: measureCharAspect('"VT323", ui-monospace, monospace'),
+    charAspect: measureCharAspect(currentFont()),
     color: colorInput.value,
   })
   paused = reduced.matches
@@ -100,6 +121,7 @@ function tick(now) {
 }
 
 columnsInput.addEventListener('input', () => player?.setColumns(Number(columnsInput.value)))
+fontSelect.addEventListener('change', () => { applyFont() })
 frameInput.addEventListener('pointerdown', () => { scrubbing = true })
 frameInput.addEventListener('pointerup', () => { scrubbing = false })
 frameInput.addEventListener('input', () => {

@@ -5,39 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=4" />
+    <link rel="stylesheet" href="./styles.css?v=6" />
   </head>
   <body>
-    <main>
-      <h1>ASCII GIF</h1>
-      <p class="lead">GIF 先合成完整画面，再收成灰度网格，按原帧时长画成 0 和 1。换色不重新解码。</p>
-      <p class="sources"><a href="./">人物夹具</a> · <a href="?gif=../fixtures/disposal.gif">处置测试</a></p>
-      <div class="controls">
-        <button id="choose-gif" type="button">选择 GIF</button>
-        <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
-        <label>列数 <input id="columns" type="range" min="40" max="160" value="110" /></label>
-        <label>帧 <input id="frame" type="range" min="0" max="0" value="0" /></label>
-        <label>颜色 <input id="color" type="color" value="#000013" /></label>
-        <button id="pause" type="button">暂停</button>
-        <button id="light-mass" type="button">白块</button>
-        <button id="dark-mass" type="button">黑块</button>
-      </div>
-      <div class="panels">
-        <section>
-          <h2>合成灰度</h2>
-          <div class="preview relative clip">
-            <canvas id="gray" class="absolute inset no-pointer"></canvas>
-          </div>
-        </section>
-        <section class="character">
-          <h2>字符</h2>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">ASCII GIF</div>
+        <p id="status" role="status"></p>
+      </header>
+      <div class="workspace">
+        <div class="stage-wrap">
           <div id="stage" class="stage relative clip">
             <canvas id="ascii" class="absolute inset no-pointer"></canvas>
           </div>
-        </section>
+        </div>
+        <aside class="inspector">
+          <section class="group">
+            <h2>/ SOURCE</h2>
+            <button id="choose-gif" type="button">选择 GIF</button>
+            <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
+            <div class="field">
+              <div class="field-label"><span>帧</span><span id="frame-value">1</span></div>
+              <input id="frame" type="range" min="0" max="0" value="0" />
+            </div>
+            <button id="pause" type="button">暂停</button>
+            <p class="sources"><a href="./">人物夹具</a> · <a href="?gif=../fixtures/disposal.gif">处置测试</a></p>
+          </section>
+          <section class="group">
+            <h2>/ CHARACTERS</h2>
+            <div class="field">
+              <div class="field-label"><span>列数</span><span id="columns-value">110</span></div>
+              <input id="columns" type="range" min="40" max="160" value="110" />
+            </div>
+            <label class="field">
+              <span class="field-label">字体</span>
+              <select id="font">
+                <option value="consolas" selected>Consolas</option>
+                <option value="cascadia">Cascadia Mono</option>
+                <option value="courier">Courier New</option>
+                <option value="lucida">Lucida Console</option>
+                <option value="vt323">VT323</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">颜色</span>
+              <input id="color" type="color" value="#000013" />
+            </label>
+          </section>
+          <section class="group">
+            <h2>/ BACKDROP</h2>
+            <div class="mass-toggle">
+              <button id="light-mass" class="is-on" type="button">白块</button>
+              <button id="dark-mass" type="button">黑块</button>
+            </div>
+          </section>
+          <section class="group">
+            <h2>/ GRAY</h2>
+            <div class="preview relative clip">
+              <canvas id="gray" class="absolute inset no-pointer"></canvas>
+            </div>
+          </section>
+        </aside>
       </div>
-      <p id="status" role="status"></p>
-    </main>
-    <script type="module" src="./main.mjs?v=4"></script>
+    </div>
+    <script type="module" src="./main.mjs?v=6"></script>
   </body>
 </html>

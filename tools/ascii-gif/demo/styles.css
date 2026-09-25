@@ -6,40 +6,132 @@
   font-display: swap;
 }
 
+html, body { height: 100%; }
 body {
   margin: 0;
-  background: #111;
+  background: #070707;
   color: #ececec;
-  font: 20px/1.4 "VT323", ui-monospace, monospace;
+  font: 13px/1.4 "Segoe UI", system-ui, sans-serif;
 }
-main { max-width: 1080px; margin: 0 auto; padding: 16px 20px 28px; }
-h1, h2 { font-weight: 400; }
-h1 { margin: 0 0 4px; font-size: 32px; }
-h2 { margin: 0 0 8px; font-size: 18px; color: #bdbdbd; }
-.lead, .sources, #status { margin: 0 0 8px; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
 a { color: inherit; }
-.panels { display: grid; grid-template-columns: minmax(180px, 280px) 1fr; gap: 20px; align-items: start; }
 .relative { position: relative; }
 .absolute { position: absolute; }
 .inset { inset: 0; }
 .clip { overflow: hidden; }
 .no-pointer { pointer-events: none; }
-.preview {
-  aspect-ratio: 3 / 4;
-  background: repeating-conic-gradient(#2a2a2a 0% 25%, #171717 0% 50%) 0 0 / 16px 16px;
+
+.shell { display: flex; flex-direction: column; height: 100%; }
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid #222;
+  background: #0c0c0c;
 }
-.preview canvas, .stage canvas { width: 100%; height: 100%; display: block; }
+.brand { font-size: 14px; letter-spacing: 0.04em; white-space: nowrap; }
+#status {
+  margin: 0;
+  min-width: 0;
+  color: #8d8d8d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.workspace { flex: 1; min-height: 0; display: flex; }
+.stage-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  padding: 28px;
+  background: #050505;
+}
+.stage { flex: 1; width: 100%; background: #f3f3f3; }
+.stage canvas, .preview canvas { width: 100%; height: 100%; display: block; }
 #gray { image-rendering: pixelated; }
-.stage { height: min(58vh, 520px); background: #000013; }
-.controls { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin: 16px 0; }
-label { display: inline-flex; gap: 8px; align-items: center; }
-button, input { font: inherit; color: inherit; }
-button { background: transparent; border: 1px solid #ececec; padding: 2px 10px; }
-#status { min-height: 1.4em; }
+
+.inspector {
+  width: 300px;
+  overflow: auto;
+  background: #121212;
+  border-left: 1px solid #222;
+}
+.group { padding: 18px 16px 8px; border-bottom: 1px solid #222; }
+h2 {
+  margin: 0 0 14px;
+  color: #8d8d8d;
+  font: 11px/1 "Segoe UI", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+.field { display: block; margin: 0 0 14px; }
+.field-label {
+  display: flex;
+  justify-content: space-between;
+  color: #c8c8c8;
+}
+.sources { margin: 4px 0 12px; color: #8d8d8d; font-size: 12px; }
+
+button, select {
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 7px 10px;
+  background: #1b1b1b;
+  border: 1px solid #2c2c2c;
+  border-radius: 4px;
+}
+.mass-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mass-toggle button { margin: 0 0 14px; }
+button.is-on { background: #ececec; color: #111; border-color: #ececec; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  margin: 10px 0 0;
+  background: #3a3a3a;
+  border: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #f3f3f3;
+  border: 0;
+}
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: #3a3a3a;
+  border: 0;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #f3f3f3;
+  border: 0;
+  border-radius: 0;
+}
+input[type="color"] {
+  width: 100%;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid #2c2c2c;
+}
+.preview {
+  aspect-ratio: 1;
+  max-height: 240px;
+  margin: 0 0 14px;
+  background: repeating-conic-gradient(#2a2a2a 0% 25%, #171717 0% 50%) 0 0 / 12px 12px;
+}
 
 @media (max-width: 800px) {
-  .panels { grid-template-columns: 1fr; }
-  .character { order: -1; }
-  .stage { height: 52vh; }
-  .preview { width: min(42vw, 180px); }
+  .workspace { flex-direction: column; overflow: auto; }
+  .stage-wrap { height: 58vh; flex: none; padding: 12px; }
+  .inspector { width: auto; border-left: 0; border-top: 1px solid #222; }
 }

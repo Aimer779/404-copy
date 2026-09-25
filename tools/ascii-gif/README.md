@@ -18,7 +18,7 @@ GIF → `parseGIF` / `decompressFrame`（打开 patch）→ 按 `disposalType` �
 python -m http.server 4174 --bind 127.0.0.1
 ```
 
-打开 `http://127.0.0.1:4174/tools/ascii-gif/demo/`。页面上的「选择 GIF」读取本机文件，在浏览器里合成并转成字符，文件不会发到别处。
+打开 `http://127.0.0.1:4174/tools/ascii-gif/demo/`。页面上的「选择 GIF」读取本机文件，在浏览器里合成并转成字符，文件不会发到别处。「字体」切换字符用的等宽字体，默认是 Consolas。VT323 是原来的像素等宽字。
 
 默认人物是 `fixtures/bust.gif`。`?gif=` 仍然可以指定一个地址，`?gif=../fixtures/disposal.gif` 用来看局部帧和帧处置。
 
@@ -30,7 +30,7 @@ import { loadAsciiClip, AsciiPlayer } from './src/index.mjs'
 const clip = await loadAsciiClip(url, { pixelColumns: 180 })
 const player = new AsciiPlayer(canvas, clip, {
   columns: 110,
-  font: '"VT323", ui-monospace, monospace',
+  font: 'Consolas, ui-monospace, monospace',
   color: '#000013',
   ink: 'auto',
 })
