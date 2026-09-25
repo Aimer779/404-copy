@@ -33,6 +33,9 @@ a { color: inherit; }
   background: #0c0c0c;
 }
 .brand { font-size: 14px; letter-spacing: 0.04em; white-space: nowrap; }
+.top-actions { display: flex; gap: 8px; margin-left: auto; }
+.top-actions button { width: auto; margin: 0; padding: 6px 14px; white-space: nowrap; }
+#export-png { background: #f3f3f3; color: #111; border-color: #f3f3f3; }
 #status {
   margin: 0;
   min-width: 0;

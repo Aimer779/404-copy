@@ -157,7 +157,7 @@ export function contentBounds(frames, width, height) {
     for (let y = 0; y < height; y++) {
       const row = y * width
       for (let x = 0; x < width; x++) {
-        if (frame.alpha[row + x] < 32) continue
+        if (frame.alpha[row + x] < 128) continue
         if (x < minX) minX = x
         if (y < minY) minY = y
         if (x > maxX) maxX = x

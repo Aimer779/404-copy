@@ -20,6 +20,7 @@ export class AsciiPlayer {
     this.color = options.color || '#000013'
     this.ink = options.ink || 'auto'
     this.floor = options.floor ?? 18
+    this.gain = options.gain ?? 1
     this.viewport = options.viewport || null
     this.bands = null
     this.time = 0
@@ -157,7 +158,7 @@ export class AsciiPlayer {
     const ctx = this.ctx
     for (let row = row0; row < row1; row++) {
       for (let col = col0; col < col1; col++) {
-        const amount = coverage[row * columns + col]
+        const amount = Math.min(255, coverage[row * columns + col] * this.gain)
         if (amount < 8) continue
         const weight = amount / 255
         const scale = 0.42 + 0.7 * weight * weight

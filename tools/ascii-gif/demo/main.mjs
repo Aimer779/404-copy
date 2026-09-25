@@ -71,6 +71,26 @@ function drawGray(frame) {
   grayCtx.putImageData(image, 0, 0)
 }
 
+function exportPng() {
+  if (!ascii.width || !ascii.height) return
+  const sheet = document.createElement('canvas')
+  sheet.width = ascii.width
+  sheet.height = ascii.height
+  const ctx = sheet.getContext('2d')
+  ctx.fillStyle = getComputedStyle(stage).backgroundColor
+  ctx.fillRect(0, 0, sheet.width, sheet.height)
+  ctx.drawImage(ascii, 0, 0)
+  sheet.toBlob((blob) => {
+    if (!blob) return
+    const link = document.createElement('a')
+    const base = (sourceName || 'ascii').replace(/\.[^.]+$/, '')
+    link.href = URL.createObjectURL(blob)
+    link.download = `${base}-ascii.png`
+    link.click()
+    URL.revokeObjectURL(link.href)
+  }, 'image/png')
+}
+
 function timeForFrame(index) {
   let time = 0
   for (let i = 0; i < index; i++) time += clip.frames[i].delay
@@ -135,6 +155,7 @@ pauseButton.addEventListener('click', () => {
 })
 const gifFile = document.querySelector('#gif-file')
 document.querySelector('#choose-gif').addEventListener('click', () => gifFile.click())
+document.querySelector('#export-png').addEventListener('click', exportPng)
 gifFile.addEventListener('change', async () => {
   const file = gifFile.files?.[0]
   gifFile.value = ''

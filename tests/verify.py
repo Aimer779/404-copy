@@ -50,7 +50,8 @@ with sync_playwright() as p:
             assert page.evaluate('document.fonts.check(\'180px "404 Display"\', "404")')
             assert page.locator('h1').count() == 1
             assert page.get_by_role('heading', name='404', exact=True).count() == 1
-            assert page.locator('.eyebrow,.message,.coordinate,.mass-noise,canvas').count() == 0
+            assert page.locator('.eyebrow,.message,.coordinate,.mass-noise').count() == 0
+            assert page.locator('canvas.ascii-figure').count() == 1
             assert page.evaluate('document.documentElement.scrollWidth === innerWidth')
             assert page.evaluate('document.documentElement.scrollHeight === innerHeight')
             if width == 390:
@@ -144,12 +145,12 @@ with sync_playwright() as p:
     a,b=geometry_at(1399),geometry_at(1401)
     assert max(abs(x-y) for r,s in zip(a,b) for x,y in zip(r,s)) < 4, 'Silhouette jumps at preset boundary'
     colors=[]
-    for time in [2790,3000,3300]:
+    for time in [2790,2816,3100]:
         page.goto(f'{URL}?at={time}')
         colors.append(page.locator('main').evaluate('e => getComputedStyle(e).backgroundColor'))
-        if time == 3000:
+        if time == 2816:
             page.screenshot(path=str(SHOTS/'after-palette-transition.png'))
-    assert len(set(colors)) == 3, 'Palette lacks intermediate colors'
+    assert len(set(colors)) == 3, 'Palette collapse does not break the color'
     tearing_spans=[]
     for time in [4600,4800,5400,6000,6480]:
         page.goto(f'{URL}?at={time}')
@@ -191,7 +192,7 @@ with sync_playwright() as p:
                   'touch tap','two deterministic cycles','live reduced-motion toggles',
                   'initial reduced-motion','no-JavaScript fallback','no external requests',
                   'continuous movement in all palettes','morph boundary continuity',
-                  'palette intermediate colors','sustained strong blue-state tearing'],
+                  'palette collapse frames','sustained strong blue-state tearing'],
         'errors':errors,'failedRequests':failures,'snapshots':results,
     },indent=2),encoding='utf-8')
     browser.close()

@@ -62,6 +62,10 @@
     return strip;
   });
   document.querySelector('.mass-fallback').hidden = true;
+  const asciiCanvas = document.createElement('canvas');
+  asciiCanvas.className = 'ascii-figure absolute inset no-pointer';
+  mass.append(asciiCanvas);
+  let asciiPlayer = null;
 
   const tears = Array.from({ length: 52 }, (_, i) => {
     const line = document.createElement('i');
@@ -115,6 +119,8 @@
     surge: [[0, 0, 19], [17, 17, 244], [234, 220, 40]],
   };
   const noise = n => { const x = Math.sin(n * 127.1) * 43758.5453; return x - Math.floor(x); };
+  const hot = [241, 38, 99];
+  const cold = [20, 44, 255];
   const rgb = color => `rgb(${color.map(Math.round).join(' ')})`;
   const foreground = color => {
     const linear = color.map(v => v / 255 <= .04045 ? v / 3294.6 : ((v / 255 + .055) / 1.055) ** 2.4);
@@ -123,19 +129,38 @@
   let animationFrame = 0;
   let reloadTimer = 0;
   let elapsed = 0;
+  let gifElapsed = 0;
+  let gifStamp = 0;
   let startedAt = 0;
   let lastPaint = -Infinity;
+
+  function sameSwatch(a, b) {
+    return a.every((color, i) => color.every((channel, j) => channel === b[i][j]));
+  }
+
+  // Five hard steps, 48ms each. Channels and surfaces arrive apart, then the swatch locks.
+  function collapseColors(before, after, frame) {
+    const [pageColor, mass, button] = before;
+    const [nextPage, nextMass, nextButton] = after;
+    const torn = (from, to, index) => [to[0], from[1], index === 1 ? 0 : 255];
+    return [
+      [hot, cold, hot],
+      [nextPage, mass, cold],
+      [torn(pageColor, nextPage, 0), torn(mass, nextMass, 1), nextButton],
+      [pageColor, nextMass, hot],
+      [nextPage, nextMass, button],
+    ][frame];
+  }
 
   function paintPalette(t) {
     const index = palette.findLastIndex(([at]) => t >= at);
     const [at, mode] = palette[index];
     const before = swatches[palette[(index + palette.length - 1) % palette.length][1]];
     const after = swatches[mode];
-    const blend = smooth((t - at) / 480);
-    const colors = after.map((color, i) => color.map((channel, j) => mix(before[i][j], channel, blend)));
+    const frame = Math.floor((t - at) / 48);
+    const colors = frame >= 5 || sameSwatch(before, after) ? after : collapseColors(before, after, frame);
     page.dataset.mode = mode;
     ['--page', '--mass', '--button-bg'].forEach((key, i) => page.style.setProperty(key, rgb(colors[i])));
-    // Keep the text readable while inverse colors pass through intermediate values.
     page.style.setProperty('--ink', foreground(colors[1]));
     page.style.setProperty('--button-fg', foreground(colors[2]));
     page.style.setProperty('--signal', foreground(colors[0]));
@@ -172,22 +197,55 @@
       strip.style.setProperty('--right', `${right / 1280 * 100}%`);
       strip.style.setProperty('--width', `${Math.max(0, right - left) / 1280 * 100}%`);
       strip.style.setProperty('--shift', `${shift}px`);
-      return [top, bottom, left, right];
+      return { top, bottom, left, right, shift, hidden: right - left < 1 };
     });
     // Thin displaced scans roughen the silhouette, without filling it with fake ASCII/noise.
     tears.forEach((line, i) => {
       line.hidden = !strength;
       if (!strength) return;
       const y = 80 + i * 11 + noise(jitterFrame + i * 7) * 8;
-      const band = geometry.find(([top, bottom, left, right]) => y >= top && y < bottom && right - left > 20);
+      const band = geometry.find(({ top, bottom, left, right }) => y >= top && y < bottom && right - left > 20);
       if (!band) { line.hidden = true; return; }
       const offset = (noise(jitterFrame * 3 + i) - .5) * 104 * strength;
-      const width = (band[3] - band[2]) * (i % 4 === 0 ? .25 + noise(i) * .3 : 1);
-      const left = band[2] + offset + (i % 4 === 0 ? (band[3] - band[2] - width) * noise(i + jitterFrame) : 0);
+      const width = (band.right - band.left) * (i % 4 === 0 ? .25 + noise(i) * .3 : 1);
+      const left = band.left + offset + (i % 4 === 0 ? (band.right - band.left - width) * noise(i + jitterFrame) : 0);
       line.style.cssText = `top:${(y - 30) / 660 * 100}%;left:${left / 1280 * 100}%;width:${width / 1280 * 100}%;height:${1 + i % 3}px;`;
     });
     document.querySelectorAll('.fragment').forEach((fragment, i) => {
       fragment.style.transform = still ? 'none' : `translate(${Math.sin(wave * 4 + i) * 26}px,${Math.sin(wave * 3 + i) * 9}px)`;
+    });
+    return geometry;
+  }
+
+  function syncAscii(bands, gifTime) {
+    if (!asciiPlayer) return;
+    const width = mass.clientWidth;
+    const height = mass.clientHeight;
+    if (width < 2 || height < 2) return;
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    const cssBands = [];
+    for (const band of bands) {
+      if (band.hidden) continue;
+      const x = band.left / 1280 * width;
+      const y = (band.top - 30) / 660 * height;
+      const bandWidth = Math.max(0, band.right - band.left) / 1280 * width;
+      const bandHeight = Math.max(0, band.bottom - band.top) / 660 * height;
+      cssBands.push({ x, y, width: bandWidth, height: bandHeight, shift: band.shift });
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x + bandWidth);
+      maxY = Math.max(maxY, y + bandHeight);
+    }
+    if (!cssBands.length) return;
+    asciiPlayer.setViewport({ x: minX, y: minY, width: maxX - minX, height: maxY - minY });
+    asciiPlayer.setColumns(width < 700 ? 64 : 120);
+    asciiPlayer.sync({
+      time: gifTime,
+      color: page.style.getPropertyValue('--ink') || '#000013',
+      bands: cssBands,
     });
   }
 
@@ -207,7 +265,8 @@
     const burst = bursts.find(([at, length]) => t >= at && t < at + length);
     const strength = !still && burst ? .65 + .35 * Math.sin(t * .016) ** 2 : 0;
     paintPalette(t);
-    paintShape(t, still, strength);
+    const bands = paintShape(t, still, strength);
+    syncAscii(bands, fixedTime !== null || still ? 0 : gifElapsed);
     paintGlitch(strength ? 1 + Math.floor(t / 32) % 3 : 0, t, strength);
     clusters.forEach((cluster, i) => {
       const local = (t + i * 370) % 1800;
@@ -217,6 +276,9 @@
   }
 
   function tick(now) {
+    if (!gifStamp) gifStamp = now;
+    gifElapsed += now - gifStamp;
+    gifStamp = now;
     if (now - lastPaint >= 16) {
       render(elapsed + now - startedAt);
       lastPaint = now;
@@ -234,6 +296,7 @@
   function start() {
     if (animationFrame || document.hidden || reduceMotion.matches || reconnect.disabled || fixedTime !== null) return;
     startedAt = performance.now();
+    gifStamp = 0;
     lastPaint = -Infinity;
     animationFrame = requestAnimationFrame(tick);
   }
@@ -267,4 +330,15 @@
 
   render(fixedTime ?? 0);
   start();
+
+  import('./tools/ascii-gif/src/index.mjs').then(async ({ loadAsciiClip, AsciiPlayer }) => {
+    const clip = await loadAsciiClip('assets/squidward.gif');
+    asciiPlayer = new AsciiPlayer(asciiCanvas, clip, {
+      font: 'Consolas, ui-monospace, monospace',
+      columns: mass.clientWidth < 700 ? 64 : 120,
+      gain: 1.7,
+      color: page.style.getPropertyValue('--ink') || '#000013',
+    });
+    render(fixedTime ?? elapsed);
+  }).catch(() => {});
 })();

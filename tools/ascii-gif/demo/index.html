@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=6" />
+    <link rel="stylesheet" href="./styles.css?v=7" />
   </head>
   <body>
     <div class="shell">
       <header class="topbar">
         <div class="brand">ASCII GIF</div>
         <p id="status" role="status"></p>
+        <div class="top-actions">
+          <button id="choose-gif" type="button">导入 GIF</button>
+          <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
+          <button id="export-png" type="button">导出 PNG</button>
+        </div>
       </header>
       <div class="workspace">
         <div class="stage-wrap">
@@ -22,8 +27,6 @@
         <aside class="inspector">
           <section class="group">
             <h2>/ SOURCE</h2>
-            <button id="choose-gif" type="button">选择 GIF</button>
-            <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
             <div class="field">
               <div class="field-label"><span>帧</span><span id="frame-value">1</span></div>
               <input id="frame" type="range" min="0" max="0" value="0" />
@@ -68,6 +71,6 @@
         </aside>
       </div>
     </div>
-    <script type="module" src="./main.mjs?v=6"></script>
+    <script type="module" src="./main.mjs?v=7"></script>
   </body>
 </html>
