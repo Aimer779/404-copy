@@ -15,7 +15,7 @@
     "continuous movement in all palettes",
     "morph boundary continuity",
     "palette collapse frames",
-    "sustained strong blue-state tearing"
+    "equal glitch window per palette"
   ],
   "errors": [],
   "failedRequests": [],
@@ -107,14 +107,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 550,
+            "x": 526,
             "y": 70.90625,
-            "width": 223,
+            "width": 219,
             "height": 7.984375,
             "top": 70.90625,
-            "right": 773,
+            "right": 745,
             "bottom": 78.890625,
-            "left": 550
+            "left": 526
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(243, 243, 243)",
@@ -246,14 +246,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 577.328125,
-            "y": 16.828125,
-            "width": 254.34375,
-            "height": 8.21875,
-            "top": 16.828125,
-            "right": 831.671875,
-            "bottom": 25.046875,
-            "left": 577.328125
+            "x": 671.7431030273438,
+            "y": 30.53125,
+            "width": 256,
+            "height": 8.765625,
+            "top": 30.53125,
+            "right": 927.7431030273438,
+            "bottom": 39.296875,
+            "left": 671.7431030273438
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(0, 0, 19)",
@@ -266,7 +266,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(243, 243, 243)",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, 18.7431, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -385,14 +385,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 642.9375,
-            "y": 53.421875,
-            "width": 167.890625,
-            "height": 8.15625,
-            "top": 53.421875,
-            "right": 810.828125,
-            "bottom": 61.578125,
-            "left": 642.9375
+            "x": 788.426513671875,
+            "y": 68.71875,
+            "width": 141.9375,
+            "height": 8,
+            "top": 68.71875,
+            "right": 930.364013671875,
+            "bottom": 76.71875,
+            "left": 788.426513671875
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(243, 243, 243)",
@@ -405,7 +405,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(0, 0, 19)",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, -12.2297, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -524,14 +524,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 365.2115478515625,
-            "y": 95.453125,
-            "width": 353.984375,
-            "height": 8.15625,
-            "top": 95.453125,
-            "right": 719.1959228515625,
-            "bottom": 103.609375,
-            "left": 365.2115478515625
+            "x": 329.24090576171875,
+            "y": 134.171875,
+            "width": 494,
+            "height": 7.859375,
+            "top": 134.171875,
+            "right": 823.2409057617188,
+            "bottom": 142.03125,
+            "left": 329.24090576171875
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(17, 17, 244)",
@@ -544,7 +544,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(243, 243, 243)",
-          "transform": "matrix(1, 0, 0, 1, 15.8678, 0)",
+          "transform": "matrix(1, 0, 0, 1, 30.2409, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -663,14 +663,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 618.75,
+            "x": 591.75,
             "y": 88.625,
-            "width": 250.875,
+            "width": 246.375,
             "height": 9.890625,
             "top": 88.625,
-            "right": 869.625,
+            "right": 838.125,
             "bottom": 98.515625,
-            "left": 618.75
+            "left": 591.75
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(243, 243, 243)",
@@ -802,14 +802,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 649.5,
-            "y": 21.046875,
-            "width": 286.125,
-            "height": 10.1875,
-            "top": 21.046875,
-            "right": 935.625,
-            "bottom": 31.234375,
-            "left": 649.5
+            "x": 753.3681030273438,
+            "y": 38.171875,
+            "width": 288.00006103515625,
+            "height": 10.875,
+            "top": 38.171875,
+            "right": 1041.3681640625,
+            "bottom": 49.046875,
+            "left": 753.3681030273438
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(0, 0, 19)",
@@ -822,7 +822,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(243, 243, 243)",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, 18.7431, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -941,14 +941,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 723.296875,
-            "y": 66.765625,
-            "width": 188.875,
-            "height": 10.109375,
-            "top": 66.765625,
-            "right": 912.171875,
-            "bottom": 76.875,
-            "left": 723.296875
+            "x": 888.504638671875,
+            "y": 85.90625,
+            "width": 159.671875,
+            "height": 9.921875,
+            "top": 85.90625,
+            "right": 1048.176513671875,
+            "bottom": 95.828125,
+            "left": 888.504638671875
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(243, 243, 243)",
@@ -961,7 +961,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(0, 0, 19)",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, -12.2297, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -1080,14 +1080,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 408.8677978515625,
-            "y": 119.3125,
-            "width": 398.234375,
-            "height": 10.109375,
-            "top": 119.3125,
-            "right": 807.1021728515625,
-            "bottom": 129.421875,
-            "left": 408.8677978515625
+            "x": 366.61590576171875,
+            "y": 167.71875,
+            "width": 555.75,
+            "height": 9.75,
+            "top": 167.71875,
+            "right": 922.3659057617188,
+            "bottom": 177.46875,
+            "left": 366.61590576171875
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(17, 17, 244)",
@@ -1100,7 +1100,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(243, 243, 243)",
-          "transform": "matrix(1, 0, 0, 1, 15.8678, 0)",
+          "transform": "matrix(1, 0, 0, 1, 30.2409, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -1219,14 +1219,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 155.234375,
+            "x": 144.625,
             "y": 261.390625,
-            "width": 98.515625,
+            "width": 96.75,
             "height": 4.578125,
             "top": 261.390625,
-            "right": 253.75,
+            "right": 241.375,
             "bottom": 265.96875,
-            "left": 155.234375
+            "left": 144.625
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(243, 243, 243)",
@@ -1358,14 +1358,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 167.3125,
-            "y": 231.34375,
-            "width": 112.359375,
-            "height": 4.71875,
-            "top": 231.34375,
-            "right": 279.671875,
-            "bottom": 236.0625,
-            "left": 167.3125
+            "x": 219.47747802734375,
+            "y": 238.96875,
+            "width": 113.09375,
+            "height": 5.03125,
+            "top": 238.96875,
+            "right": 332.57122802734375,
+            "bottom": 244,
+            "left": 219.47747802734375
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(0, 0, 19)",
@@ -1378,7 +1378,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(243, 243, 243)",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, 18.7431, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -1497,14 +1497,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 196.296875,
-            "y": 251.671875,
-            "width": 74.171875,
-            "height": 4.6875,
-            "top": 251.671875,
-            "right": 270.46875,
-            "bottom": 256.359375,
-            "left": 196.296875
+            "x": 253.739013671875,
+            "y": 260.171875,
+            "width": 62.703125,
+            "height": 4.59375,
+            "top": 260.171875,
+            "right": 316.442138671875,
+            "bottom": 264.765625,
+            "left": 253.739013671875
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(243, 243, 243)",
@@ -1517,7 +1517,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(0, 0, 19)",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, -12.2297, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },
@@ -1636,14 +1636,14 @@
         },
         ".mass-strip": {
           "rect": {
-            "x": 82.4459228515625,
-            "y": 275.03125,
-            "width": 156.390625,
-            "height": 4.6875,
-            "top": 275.03125,
-            "right": 238.8365478515625,
-            "bottom": 279.71875,
-            "left": 82.4459228515625
+            "x": 74.58467102050781,
+            "y": 296.53125,
+            "width": 218.23435974121094,
+            "height": 4.515625,
+            "top": 296.53125,
+            "right": 292.81903076171875,
+            "bottom": 301.046875,
+            "left": 74.58467102050781
           },
           "boxSizing": "border-box",
           "backgroundColor": "rgb(17, 17, 244)",
@@ -1656,7 +1656,7 @@
           "filter": "none",
           "font": "italic 16px VT323, monospace",
           "color": "rgb(243, 243, 243)",
-          "transform": "matrix(1, 0, 0, 1, 15.8678, 0)",
+          "transform": "matrix(1, 0, 0, 1, 30.2409, 0)",
           "opacity": "1",
           "zIndex": "auto"
         },

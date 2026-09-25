@@ -151,16 +151,21 @@ with sync_playwright() as p:
         if time == 2816:
             page.screenshot(path=str(SHOTS/'after-palette-transition.png'))
     assert len(set(colors)) == 3, 'Palette collapse does not break the color'
+    for start in [384, 3184, 4784, 7184, 10384, 13684]:
+        page.goto(f'{URL}?at={start + 160}')
+        assert state(page)['glitch'] != '0', f'Palette at {start} has no glitch'
+        page.goto(f'{URL}?at={start + 720}')
+        assert state(page)['glitch'] == '0', f'Palette at {start} shakes longer than the others'
     tearing_spans=[]
-    for time in [4600,4800,5400,6000,6480]:
+    for time in [4811, 4909, 5007]:
         page.goto(f'{URL}?at={time}')
-        assert state(page)['glitch'] != '0', 'The blue passage lost its sustained glitch'
+        assert state(page)['glitch'] != '0', 'The shared glitch window dropped out'
         offsets=page.locator('.digit-slice').evaluate_all('els => els.map(e => new DOMMatrix(getComputedStyle(e).transform).m41)')
         tearing_spans.append(max(offsets)-min(offsets))
         assert tearing_spans[-1] > 14, 'Digital tearing lost its minimum intensity'
         assert page.locator('.tear-line:not([hidden])').count() >= 20
         assert page.evaluate('document.documentElement.scrollWidth === innerWidth')
-    assert max(tearing_spans) > 20, 'The blue passage has no strong tearing peaks'
+    assert max(tearing_spans) > 20, 'The glitch window has no strong tearing peaks'
 
     reduced = browser.new_context(reduced_motion='reduce',viewport={'width':390,'height':844})
     quiet = reduced.new_page()
@@ -192,7 +197,7 @@ with sync_playwright() as p:
                   'touch tap','two deterministic cycles','live reduced-motion toggles',
                   'initial reduced-motion','no-JavaScript fallback','no external requests',
                   'continuous movement in all palettes','morph boundary continuity',
-                  'palette collapse frames','sustained strong blue-state tearing'],
+                  'palette collapse frames','equal glitch window per palette'],
         'errors':errors,'failedRequests':failures,'snapshots':results,
     },indent=2),encoding='utf-8')
     browser.close()

@@ -84,10 +84,10 @@
     return slice;
   });
 
-  const clusterPositions = [[2, 30], [77, 72], [72, 38], [20, 80]];
-  const lineSegments = [[0, 27, 65], [12, 43, 38], [22, 8, 46], [31, 31, 58], [39, 0, 32], [48, 48, 43]];
+  const clusterPositions = [[4, 22], [64, 74], [70, 18], [6, 78]];
+  const lineSegments = [[0, 0, 100], [5, 14, 68], [10, 26, 42]];
   const signalField = document.querySelector('.signal-field');
-  const clusters = clusterPositions.map(([left, top], index) => {
+  const clusters = clusterPositions.map(([left, top]) => {
     const cluster = document.createElement('div');
     cluster.className = 'signal-cluster absolute';
     cluster.style.left = `${left}%`;
@@ -95,23 +95,30 @@
     for (const [y, x, width] of lineSegments) {
       const line = document.createElement('i');
       line.className = 'signal-line absolute';
-      line.style.cssText = `top:${y}px;left:${(x + index * 7) % 55}%;width:${width}%;`;
+      line.style.cssText = `top:${y}px;left:${x}%;width:${width}%;`;
       cluster.append(line);
     }
     signalField.append(cluster);
     return cluster;
   });
 
-  // Visual fit to the recording. Continuous morphing is independent of palette changes.
+  // Visual fit to the recording. Outline steps stay independent of palette changes.
   const duration = 16000;
   const palette = [[0, 'dark'], [2800, 'inverse'], [4400, 'surge'], [6800, 'inverse'], [10000, 'electric'], [13300, 'dark']];
   const outlines = [[0, 0], [1400, 1], [2800, 3], [4000, 1], [4400, 2], [5900, 0], [6800, 3], [8400, 1], [10000, 4], [11700, 0], [13300, 4], [14800, 0]];
-  const bursts = [[820, 380], [2500, 420], [4300, 2320], [9140, 460], [12480, 480], [14640, 340]];
+  // One 640ms shake in every palette, starting 384ms after that color locks.
+  const bursts = [[384, 640], [3184, 640], [4784, 640], [7184, 640], [10384, 640], [13684, 640]];
   const params = new URLSearchParams(window.location.search);
   const requestedTime = params.has('at') ? Number(params.get('at')) : NaN;
   const fixedTime = Number.isFinite(requestedTime) ? Math.max(0, requestedTime) : null;
   const mix = (a, b, t) => a + (b - a) * t;
-  const smooth = t => { const x = Math.max(0, Math.min(1, t)); return x * x * (3 - 2 * x); };
+  // Hold, then jump. count stations across span, with no in-between easing.
+  const notch = (elapsed, span, count) => {
+    if (elapsed <= 0) return 0;
+    if (elapsed >= span) return 1;
+    return Math.floor(elapsed / span * count) / (count - 1);
+  };
+  const detent = (time, span, values) => values[Math.floor(time / span) % values.length];
   const swatches = {
     dark: [[0, 0, 19], [243, 243, 243], [0, 0, 19]],
     inverse: [[243, 243, 243], [0, 0, 19], [243, 243, 243]],
@@ -170,9 +177,9 @@
     const index = outlines.findLastIndex(([at]) => t >= at);
     const [at, shape] = outlines[index];
     const previous = outlines[(index + outlines.length - 1) % outlines.length][1];
-    const blend = still ? 1 : smooth((t - at) / 920);
-    const wave = t / duration * Math.PI * 2;
-    const warpY = y => y + (still ? 0 : 6 * (Math.sin(wave * 3 + y * .009) - Math.sin(y * .009)));
+    const blend = still ? 1 : notch(t - at, 640, 5);
+    const pose = still ? 0 : detent(t, 180, [-1, -1, 0, 1, 1, 0]);
+    const lift = still ? 0 : detent(t, 180, [0, 0, 5, 5, 0, -4]);
     const topEdge = mix(bounds[previous][0], bounds[shape][0], blend);
     const bottomEdge = mix(bounds[previous][1], bounds[shape][1], blend);
     const jitterFrame = Math.floor(t / 32);
@@ -180,14 +187,13 @@
     const geometry = strips.map((strip, i) => {
       const from = profiles[previous][i], to = profiles[shape][i];
       let left = mix(from[0], to[0], blend), right = mix(from[1], to[1], blend);
-      const bandPhase = mix(from[2], to[2], blend) * .043;
       const presence = Math.min(1, (right - left) / 140);
       if (!still) {
-        left += presence * 32 * (Math.sin(wave * 5 + bandPhase) - Math.sin(bandPhase));
-        right += presence * 38 * (Math.sin(wave * 4 + bandPhase * .7) - Math.sin(bandPhase * .7));
+        left += presence * 24 * pose;
+        right += presence * 28 * pose;
       }
-      const top = warpY(mix(topEdge, bottomEdge, rows[i]));
-      const bottom = warpY(mix(topEdge, bottomEdge, rows[i + 1]));
+      const top = mix(topEdge, bottomEdge, rows[i]) + lift;
+      const bottom = mix(topEdge, bottomEdge, rows[i + 1]) + lift;
       const shift = strength * (noise(jitterFrame * 19 + Math.floor(top / 35)) - .5) * 78;
       strip.hidden = right - left < 1;
       strip.dataset.core = String(top < 520 && bottom > 250);
@@ -212,7 +218,9 @@
       line.style.cssText = `top:${(y - 30) / 660 * 100}%;left:${left / 1280 * 100}%;width:${width / 1280 * 100}%;height:${1 + i % 3}px;`;
     });
     document.querySelectorAll('.fragment').forEach((fragment, i) => {
-      fragment.style.transform = still ? 'none' : `translate(${Math.sin(wave * 4 + i) * 26}px,${Math.sin(wave * 3 + i) * 9}px)`;
+      const hop = still ? 0 : detent(t + i * 180, 180, [-18, 0, 18, 18, 0]);
+      const bob = still ? 0 : detent(t + i * 180, 180, [0, 6, 0, -6, 0]);
+      fragment.style.transform = still ? 'none' : `translate(${hop}px,${bob}px)`;
     });
     return geometry;
   }
@@ -269,9 +277,10 @@
     syncAscii(bands, fixedTime !== null || still ? 0 : gifElapsed);
     paintGlitch(strength ? 1 + Math.floor(t / 32) % 3 : 0, t, strength);
     clusters.forEach((cluster, i) => {
-      const local = (t + i * 370) % 1800;
-      cluster.classList.toggle('is-active', Boolean(!still && (local < 260 || (burst && i % 2 === 0))));
-      cluster.style.transform = still ? 'none' : `translateX(${Math.sin(t / duration * Math.PI * 8 + i) * 34}px)`;
+      const local = (t + i * 280) % 1600;
+      cluster.classList.toggle('is-active', Boolean(!still && (local < 380 || burst)));
+      const slip = still ? 0 : detent(t + i * 160, 120, [-46, 0, 58, 16]);
+      cluster.style.transform = still ? 'none' : `translateX(${slip}px)`;
     });
   }
 
