@@ -4,6 +4,7 @@ node_modules/
 *.gif
 !assets/squidward.gif
 !tools/ascii-gif/fixtures/*.gif
+!docs/*.gif
 *.png
 *.jpg
 *.jpeg
