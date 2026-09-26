@@ -52,16 +52,7 @@
 
 ### 嵌进自己的网页
 
-Agent（或你自己）拷贝 `tools/ascii-gif/src/` 和 `vendor/gifuct.mjs`，把 GIF 和 recipe JSON 放到站点里：
-
-```js
-import { mountAsciiGif } from './ascii-gif/mount.mjs'
-
-const recipe = await fetch('./clip-ascii.json').then((r) => r.json())
-mountAsciiGif(document.querySelector('#ascii-slot'), './clip.gif', recipe)
-```
-
-容器需要明确宽高或 `aspect-ratio`（recipe 里的 `look.aspect`）。墨色、底色可以换成站点里的实色。不要重写转换器。
+Agent 安装 [`.agents/skills/ascii-gif`](.agents/skills/ascii-gif/SKILL.md)（`/ascii-gif`），按 skill 把 recipe + GIF **mount** 进当前站点。演示台只负责调 look 和导出 JSON。
 
 404 页是这条链路的第一个例子：它直接 `loadAsciiClip` + `AsciiPlayer`，用 `assets/squidward.gif` 在故障轮廓里播。
 
