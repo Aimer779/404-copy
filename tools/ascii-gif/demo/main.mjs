@@ -64,8 +64,10 @@ function flashStatus(message) {
 
 function setPaused(next) {
   paused = next
+  const label = paused ? '继续' : '暂停'
   pauseButton.classList.toggle('is-paused', paused)
-  pauseButton.setAttribute('aria-label', paused ? '继续' : '暂停')
+  pauseButton.setAttribute('aria-label', label)
+  pauseButton.dataset.tooltip = label
 }
 
 function syncColorHex() {

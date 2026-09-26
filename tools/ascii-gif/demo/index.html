@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=14" />
+    <link rel="stylesheet" href="./styles.css?v=15" />
   </head>
   <body>
     <div class="shell">
@@ -14,15 +14,6 @@
           <div class="brand">ASCII GIF</div>
           <p id="status" role="status"></p>
         </div>
-        <div class="top-actions">
-          <button id="choose-gif" class="ghost" type="button">导入 GIF</button>
-          <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
-          <button id="choose-recipe" class="ghost" type="button">导入配方</button>
-          <input id="recipe-file" type="file" accept=".json,application/json" hidden />
-          <button id="copy-agent" class="ghost" type="button">复制给 Agent</button>
-          <button id="export-recipe" class="primary" type="button">导出配方</button>
-          <button id="export-png" class="ghost" type="button">导出 PNG</button>
-        </div>
       </header>
       <div class="workspace">
         <div class="stage-wrap">
@@ -30,17 +21,58 @@
             <canvas id="ascii" class="absolute inset no-pointer"></canvas>
           </div>
           <div class="transport">
-            <button id="pause" type="button" aria-label="暂停">
-              <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
-                <rect x="3.5" y="2.5" width="3" height="11" />
-                <rect x="9.5" y="2.5" width="3" height="11" />
+            <button id="pause" class="icon-btn" type="button" aria-label="暂停" data-tooltip="暂停">
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="14" y="4" width="4" height="16" rx="1" />
+                <rect x="6" y="4" width="4" height="16" rx="1" />
               </svg>
-              <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M4.5 2.5v11L13.5 8Z" />
+              <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 5v14l14-7Z" />
               </svg>
             </button>
-            <input id="frame" type="range" min="0" max="0" value="0" />
+            <input id="frame" type="range" min="0" max="0" value="0" aria-label="帧" />
             <span id="frame-value">1/1</span>
+            <span class="transport-split" aria-hidden="true"></span>
+            <button id="choose-gif" class="icon-btn" type="button" aria-label="导入 GIF" data-tooltip="导入 GIF">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" x2="12" y1="3" y2="15" />
+              </svg>
+            </button>
+            <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
+            <button id="choose-recipe" class="icon-btn" type="button" aria-label="导入配方" data-tooltip="导入配方">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                <path d="m10 13-2 2 2 2" />
+                <path d="m14 17 2-2-2-2" />
+              </svg>
+            </button>
+            <input id="recipe-file" type="file" accept=".json,application/json" hidden />
+            <button id="copy-agent" class="icon-btn" type="button" aria-label="复制给 Agent" data-tooltip="复制给 Agent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                <path d="M9 12h6" />
+                <path d="M9 16h6" />
+              </svg>
+            </button>
+            <button id="export-png" class="icon-btn" type="button" aria-label="导出 PNG" data-tooltip="导出 PNG">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                <circle cx="9" cy="9" r="2" />
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+              </svg>
+            </button>
+            <button id="export-recipe" class="icon-btn primary" type="button" aria-label="导出配方" data-tooltip="导出配方">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                <path d="M12 12v6" />
+                <path d="m9 15 3 3 3-3" />
+              </svg>
+            </button>
           </div>
         </div>
         <aside class="inspector">
@@ -100,6 +132,6 @@
         <button id="recipe-copy" class="primary" type="button">复制</button>
       </div>
     </dialog>
-    <script type="module" src="./main.mjs?v=14"></script>
+    <script type="module" src="./main.mjs?v=15"></script>
   </body>
 </html>

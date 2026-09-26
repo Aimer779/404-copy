@@ -63,13 +63,6 @@ a { color: inherit; }
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.top-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-left: auto;
-}
-.top-actions button,
 .recipe-foot button,
 .recipe-head button {
   width: auto;
@@ -121,33 +114,67 @@ button.primary:hover { background: #e5e5e5; }
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 12px;
-  width: min(440px, calc(100% - 40px));
-  padding: 8px 12px;
+  gap: 6px;
+  width: min(560px, calc(100% - 40px));
+  padding: 8px 10px;
   transform: translateX(-50%);
   background: #141414d9;
   border: 1px solid var(--line);
   backdrop-filter: blur(12px);
+  overflow: visible;
 }
-#pause {
-  width: 28px;
-  height: 28px;
+.icon-btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
   padding: 0;
   display: grid;
   place-items: center;
   flex: none;
+  color: var(--text);
   background: transparent;
   border-color: var(--line);
 }
-#pause svg {
-  width: 14px;
-  height: 14px;
-  fill: var(--text);
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
 }
+.icon-btn:hover { background: #1a1a1a; }
+.icon-btn.primary {
+  background: #f3f3f3;
+  color: #111;
+  border-color: #f3f3f3;
+}
+.icon-btn.primary:hover { background: #e5e5e5; }
+.icon-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  padding: 4px 8px;
+  background: #111;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+.icon-btn:hover::after,
+.icon-btn:focus-visible::after { opacity: 1; }
 #pause .icon-play { display: none; }
 #pause.is-paused .icon-pause { display: none; }
 #pause.is-paused .icon-play { display: block; }
-.transport #frame { width: auto; flex: 1; margin: 0; }
+.transport-split {
+  width: 1px;
+  height: 18px;
+  margin: 0 4px;
+  background: var(--line);
+  flex: none;
+}
+.transport #frame { width: auto; flex: 1; min-width: 72px; margin: 0; }
 #frame-value {
   min-width: 3.5em;
   color: var(--muted);
