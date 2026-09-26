@@ -133,6 +133,7 @@ export class AsciiPlayer {
     const grid = this.cells(index)
     const layout = this.layout(cssWidth, cssHeight, grid, dpr)
     this.prepareAtlas(layout)
+    this.canvas.dataset.glyphs = this.glyphSet.id
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.clearRect(0, 0, width, height)
     ctx.imageSmoothingEnabled = false
@@ -203,7 +204,13 @@ export class AsciiPlayer {
     const { coverage, columns } = grid
     const { originX, originY, cellW, cellH } = layout
     const ctx = this.ctx
+    const chars = glyphChars(this.glyphSet)
     const ramp = this.glyphSet.mode === 'ramp'
+    if (ramp) {
+      ctx.fillStyle = this.color
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+    }
     for (let row = row0; row < row1; row++) {
       for (let col = col0; col < col1; col++) {
         const amount = Math.min(255, coverage[row * columns + col] * this.gain)
@@ -213,21 +220,21 @@ export class AsciiPlayer {
           ? rampIndex(amount, this.glyphSet, this.glyphSet.id === 'mixed' ? glyphBit(col, row) * 2 - 1 : 0)
           : glyphBit(col, row)
         if (slot < 0) continue
-        const scale = ramp ? 0.82 + 0.18 * weight : 0.42 + 0.7 * weight * weight
+        const scale = ramp ? 0.88 + 0.12 * weight : 0.42 + 0.7 * weight * weight
         const dw = cellW * scale
         const dh = cellH * scale
-        ctx.globalAlpha = ramp ? 0.4 + 0.6 * weight : 0.28 + 0.72 * weight
-        ctx.drawImage(
-          this.atlas,
-          0,
-          slot * cellH,
-          cellW,
-          cellH,
-          originX + col * cellW + shiftX + (cellW - dw) / 2,
-          originY + row * cellH + shiftY + (cellH - dh) / 2,
-          dw,
-          dh,
-        )
+        const x = originX + col * cellW + shiftX
+        const y = originY + row * cellH + shiftY
+        if (ramp) {
+          const ch = chars[slot]
+          if (!ch || ch === ' ') continue
+          ctx.globalAlpha = 0.45 + 0.55 * weight
+          ctx.font = `${Math.max(8, dh)}px ${this.font}`
+          ctx.fillText(ch, x + cellW / 2, y + cellH / 2)
+          continue
+        }
+        ctx.globalAlpha = 0.28 + 0.72 * weight
+        ctx.drawImage(this.atlas, 0, slot * cellH, cellW, cellH, x + (cellW - dw) / 2, y + (cellH - dh) / 2, dw, dh)
       }
     }
     ctx.globalAlpha = 1

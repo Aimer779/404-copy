@@ -1,4 +1,5 @@
-import { AsciiPlayer, decodeAsciiClip, frameAt, loadAsciiClip, measureCharAspect } from '../src/index.mjs?v=17'
+import { decodeAsciiClip, frameAt, loadAsciiClip } from '../src/index.mjs?v=18'
+import { AsciiPlayer, measureCharAspect } from '../src/player.mjs?v=18'
 import {
   agentPrompt,
   buildRecipe,
@@ -8,7 +9,7 @@ import {
   recipeClip,
   recipeFileName,
   retuneRecipe,
-} from '../src/recipe.mjs?v=17'
+} from '../src/recipe.mjs?v=18'
 
 const gray = document.querySelector('#gray')
 const ascii = document.querySelector('#ascii')
@@ -349,6 +350,7 @@ function useClip(next, name) {
     color: colorInput.value,
     glyphs: glyphsSelect.value,
   })
+  ascii.dataset.glyphs = glyphsSelect.value
   render()
 }
 
@@ -411,8 +413,9 @@ columnsInput.addEventListener('input', () => {
 })
 fontSelect.addEventListener('change', () => { applyFont() })
 function applyGlyphs() {
-  if (!player || typeof player.setGlyphs !== 'function') return
+  if (!player) return
   player.setGlyphs(glyphsSelect.value)
+  ascii.dataset.glyphs = glyphsSelect.value
   render()
 }
 glyphsSelect.addEventListener('input', applyGlyphs)
