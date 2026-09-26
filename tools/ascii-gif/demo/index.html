@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=20" />
+    <link rel="stylesheet" href="./styles.css?v=21" />
   </head>
   <body>
     <div class="shell">
@@ -33,7 +33,7 @@
             </g>
           </svg>
           <div class="brand">ASCII GIF</div>
-          <p id="status" role="status"></p>
+          <p id="status" class="tagline" role="status">Turn a GIF into an ASCII animation.</p>
         </div>
       </header>
       <div class="workspace">
@@ -144,6 +144,11 @@
             <div class="preview relative clip">
               <canvas id="gray" class="absolute inset no-pointer"></canvas>
             </div>
+            <p class="source-meta" id="source-meta">
+              <span id="source-file"></span>
+              · <b id="source-frames">0</b> frames
+              · <b id="source-grid">0×0</b>
+            </p>
             <p class="sources"><a href="./">Squidward</a> · <a href="?gif=../fixtures/bust.gif">Bust</a> · <a href="?gif=../fixtures/disposal.gif">Disposal</a></p>
           </section>
         </aside>

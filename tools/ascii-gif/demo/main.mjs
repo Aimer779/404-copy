@@ -54,13 +54,17 @@ let scrubbing = false
 let noteTimer = 0
 let editorTimer = 0
 let panelFileName = 'ascii.json'
+const TAGLINE = 'Turn a GIF into an ASCII animation.'
 
 function flashStatus(message) {
   statusNote = message
   status.textContent = message
   window.clearTimeout(noteTimer)
   noteTimer = window.setTimeout(() => {
-    if (statusNote === message) statusNote = ''
+    if (statusNote === message) {
+      statusNote = ''
+      status.textContent = TAGLINE
+    }
   }, 2400)
 }
 
@@ -320,11 +324,10 @@ function render() {
   if (!scrubbing && frameInput.value !== String(index)) frameInput.value = String(index)
   document.querySelector('#columns-value').textContent = String(grid.columns)
   document.querySelector('#frame-value').textContent = `${index + 1} / ${source.frames.length}`
-  if (statusNote) {
-    status.textContent = statusNote
-    return
-  }
-  status.textContent = `${sourceName} · ${source.frames.length} frames · ${grid.columns}×${grid.rows}`
+  document.querySelector('#source-file').textContent = sourceName
+  document.querySelector('#source-frames').textContent = String(source.frames.length)
+  document.querySelector('#source-grid').textContent = `${grid.columns}×${grid.rows}`
+  if (!statusNote) status.textContent = TAGLINE
 }
 
 function resetClock(frameCount) {

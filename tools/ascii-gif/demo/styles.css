@@ -60,11 +60,11 @@ a { color: inherit; }
   letter-spacing: 0.08em;
   white-space: nowrap;
 }
-#status {
+.tagline {
   margin: 0;
   min-width: 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -213,7 +213,12 @@ h2 {
   color: var(--text);
   font-size: 11px;
 }
-.sources { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+.sources {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
 .inspector select { width: 100%; background: #0a0a0a; }
 
 .color-row {
@@ -301,10 +306,22 @@ input[type="range"]::-moz-range-thumb {
 
 .preview {
   aspect-ratio: 1;
+  width: min(100%, 220px);
   max-height: 220px;
+  margin: 0 auto;
   background: repeating-conic-gradient(#2a2a2a 0% 25%, #171717 0% 50%) 0 0 / 12px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
+}
+.source-meta {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+.source-meta b {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .recipe-panel {
