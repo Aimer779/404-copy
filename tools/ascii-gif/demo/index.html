@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=22" />
+    <script>
+      window.__defaultGif = fetch(new URL('../../../assets/squidward.gif', location.href))
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=25" />
+    <link rel="modulepreload" href="./main.mjs?v=25" />
+    <link rel="modulepreload" href="../src/composite.mjs" />
+    <link rel="modulepreload" href="../src/player.mjs" />
+    <link rel="modulepreload" href="../src/recipe.mjs" />
+    <link rel="modulepreload" href="../src/grid.mjs" />
+    <link rel="modulepreload" href="../src/glyphs.mjs" />
+    <link rel="modulepreload" href="../vendor/gifuct.mjs" />
   </head>
   <body>
     <div class="shell">
@@ -169,6 +179,6 @@
         <button id="recipe-copy" class="primary" type="button">Copy</button>
       </div>
     </dialog>
-    <script type="module" src="./main.mjs?v=22"></script>
+    <script type="module" src="./main.mjs?v=25"></script>
   </body>
 </html>

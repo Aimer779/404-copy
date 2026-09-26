@@ -1,0 +1,1499 @@
+{
+  "url": "http://127.0.0.1:4174/tools/ascii-gif/demo/",
+  "throttle": true,
+  "summary": {
+    "n": 10,
+    "usable_p50": 920,
+    "usable_p75": 936,
+    "usable_p95": 966,
+    "usable_min": 896,
+    "usable_max": 984,
+    "ttfb_p75": 2,
+    "requests": 16,
+    "transferBytes": 315979,
+    "encodedBytes": 320808,
+    "longTaskMs_p75": 0
+  },
+  "runs": [
+    {
+      "usable": 984,
+      "ttfb": 3,
+      "domContentLoaded": 372,
+      "load": 714,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 52,
+      "longTasks": 1,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 44,
+          "end": 119,
+          "duration": 75
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 49,
+          "end": 134,
+          "duration": 85
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 142,
+          "end": 182,
+          "duration": 40
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 143,
+          "end": 213,
+          "duration": 71
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 142,
+          "end": 230,
+          "duration": 88
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 184,
+          "end": 230,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 183,
+          "end": 259,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 184,
+          "end": 275,
+          "duration": 92
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 184,
+          "end": 276,
+          "duration": 92
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 183,
+          "end": 290,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 184,
+          "end": 291,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 292,
+          "end": 369,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 372,
+          "end": 712,
+          "duration": 340
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 717,
+          "end": 758,
+          "duration": 41
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 716,
+          "end": 880,
+          "duration": 164
+        }
+      ]
+    },
+    {
+      "usable": 943,
+      "ttfb": 2,
+      "domContentLoaded": 381,
+      "load": 721,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 55,
+          "end": 113,
+          "duration": 58
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 55,
+          "end": 144,
+          "duration": 89
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 145,
+          "end": 193,
+          "duration": 48
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 145,
+          "end": 209,
+          "duration": 64
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 145,
+          "end": 225,
+          "duration": 79
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 194,
+          "end": 240,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 194,
+          "end": 285,
+          "duration": 91
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 194,
+          "end": 286,
+          "duration": 92
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 194,
+          "end": 301,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 194,
+          "end": 301,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 194,
+          "end": 302,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 303,
+          "end": 377,
+          "duration": 75
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 380,
+          "end": 719,
+          "duration": 338
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 722,
+          "end": 765,
+          "duration": 44
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 722,
+          "end": 890,
+          "duration": 168
+        }
+      ]
+    },
+    {
+      "usable": 917,
+      "ttfb": 2,
+      "domContentLoaded": 364,
+      "load": 691,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 50,
+          "end": 109,
+          "duration": 58
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 54,
+          "end": 140,
+          "duration": 86
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 141,
+          "end": 188,
+          "duration": 47
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 141,
+          "end": 219,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 141,
+          "end": 220,
+          "duration": 79
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 189,
+          "end": 234,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 189,
+          "end": 250,
+          "duration": 61
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 189,
+          "end": 267,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 189,
+          "end": 283,
+          "duration": 94
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 189,
+          "end": 283,
+          "duration": 94
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 189,
+          "end": 287,
+          "duration": 98
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 284,
+          "end": 361,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 364,
+          "end": 688,
+          "duration": 324
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 693,
+          "end": 736,
+          "duration": 43
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 692,
+          "end": 861,
+          "duration": 169
+        }
+      ]
+    },
+    {
+      "usable": 896,
+      "ttfb": 2,
+      "domContentLoaded": 354,
+      "load": 677,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 45,
+          "end": 104,
+          "duration": 59
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 49,
+          "end": 136,
+          "duration": 86
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 137,
+          "end": 183,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 137,
+          "end": 214,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 137,
+          "end": 215,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 184,
+          "end": 228,
+          "duration": 44
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 184,
+          "end": 259,
+          "duration": 75
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 184,
+          "end": 274,
+          "duration": 90
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 184,
+          "end": 274,
+          "duration": 90
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 184,
+          "end": 277,
+          "duration": 93
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 184,
+          "end": 289,
+          "duration": 105
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 275,
+          "end": 351,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 354,
+          "end": 675,
+          "duration": 321
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 678,
+          "end": 720,
+          "duration": 42
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 678,
+          "end": 846,
+          "duration": 168
+        }
+      ]
+    },
+    {
+      "usable": 916,
+      "ttfb": 2,
+      "domContentLoaded": 358,
+      "load": 698,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 50,
+          "end": 109,
+          "duration": 59
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 54,
+          "end": 139,
+          "duration": 85
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 140,
+          "end": 186,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 140,
+          "end": 218,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 140,
+          "end": 218,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 187,
+          "end": 233,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 187,
+          "end": 264,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 187,
+          "end": 278,
+          "duration": 91
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 187,
+          "end": 279,
+          "duration": 91
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 187,
+          "end": 282,
+          "duration": 95
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 187,
+          "end": 294,
+          "duration": 106
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 279,
+          "end": 355,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 358,
+          "end": 696,
+          "duration": 339
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 700,
+          "end": 731,
+          "duration": 31
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 699,
+          "end": 869,
+          "duration": 169
+        }
+      ]
+    },
+    {
+      "usable": 919,
+      "ttfb": 2,
+      "domContentLoaded": 358,
+      "load": 699,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 46,
+          "end": 104,
+          "duration": 58
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 46,
+          "end": 135,
+          "duration": 89
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 136,
+          "end": 183,
+          "duration": 47
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 136,
+          "end": 216,
+          "duration": 79
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 136,
+          "end": 217,
+          "duration": 80
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 185,
+          "end": 231,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 184,
+          "end": 262,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 184,
+          "end": 277,
+          "duration": 92
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 185,
+          "end": 277,
+          "duration": 93
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 185,
+          "end": 279,
+          "duration": 95
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 185,
+          "end": 292,
+          "duration": 108
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 278,
+          "end": 355,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 358,
+          "end": 697,
+          "duration": 339
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 700,
+          "end": 736,
+          "duration": 35
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 700,
+          "end": 868,
+          "duration": 168
+        }
+      ]
+    },
+    {
+      "usable": 924,
+      "ttfb": 2,
+      "domContentLoaded": 380,
+      "load": 716,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 54,
+          "end": 114,
+          "duration": 60
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 59,
+          "end": 145,
+          "duration": 86
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 147,
+          "end": 193,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 147,
+          "end": 224,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 147,
+          "end": 225,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 194,
+          "end": 239,
+          "duration": 45
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 194,
+          "end": 270,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 194,
+          "end": 285,
+          "duration": 91
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 194,
+          "end": 300,
+          "duration": 106
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 194,
+          "end": 301,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 194,
+          "end": 303,
+          "duration": 109
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 302,
+          "end": 377,
+          "duration": 75
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 380,
+          "end": 713,
+          "duration": 333
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 718,
+          "end": 749,
+          "duration": 32
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 717,
+          "end": 875,
+          "duration": 158
+        }
+      ]
+    },
+    {
+      "usable": 940,
+      "ttfb": 2,
+      "domContentLoaded": 382,
+      "load": 715,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 55,
+          "end": 114,
+          "duration": 58
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 59,
+          "end": 144,
+          "duration": 85
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 145,
+          "end": 192,
+          "duration": 47
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 145,
+          "end": 224,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 146,
+          "end": 225,
+          "duration": 79
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 194,
+          "end": 239,
+          "duration": 45
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 194,
+          "end": 270,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 194,
+          "end": 286,
+          "duration": 92
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 194,
+          "end": 301,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 194,
+          "end": 301,
+          "duration": 107
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 194,
+          "end": 304,
+          "duration": 110
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 302,
+          "end": 379,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 382,
+          "end": 713,
+          "duration": 331
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 716,
+          "end": 767,
+          "duration": 51
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 716,
+          "end": 891,
+          "duration": 175
+        }
+      ]
+    },
+    {
+      "usable": 902,
+      "ttfb": 2,
+      "domContentLoaded": 351,
+      "load": 679,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 42,
+          "end": 99,
+          "duration": 58
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 46,
+          "end": 130,
+          "duration": 85
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 132,
+          "end": 177,
+          "duration": 45
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 132,
+          "end": 209,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 132,
+          "end": 210,
+          "duration": 79
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 178,
+          "end": 224,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 178,
+          "end": 255,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 178,
+          "end": 269,
+          "duration": 91
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 178,
+          "end": 270,
+          "duration": 91
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 178,
+          "end": 273,
+          "duration": 95
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 178,
+          "end": 285,
+          "duration": 106
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 271,
+          "end": 349,
+          "duration": 78
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 351,
+          "end": 678,
+          "duration": 327
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 681,
+          "end": 725,
+          "duration": 44
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 680,
+          "end": 848,
+          "duration": 168
+        }
+      ]
+    },
+    {
+      "usable": 920,
+      "ttfb": 2,
+      "domContentLoaded": 363,
+      "load": 702,
+      "transferBytes": 315979,
+      "encodedBytes": 320808,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 8677,
+          "encoded": 8377,
+          "start": 49,
+          "end": 124,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 17138,
+          "encoded": 16838,
+          "start": 53,
+          "end": 139,
+          "duration": 87
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 865,
+          "encoded": 565,
+          "start": 143,
+          "end": 187,
+          "duration": 44
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 143,
+          "end": 219,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 143,
+          "end": 219,
+          "duration": 76
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 1351,
+          "encoded": 1051,
+          "start": 188,
+          "end": 234,
+          "duration": 46
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 4932,
+          "encoded": 4632,
+          "start": 188,
+          "end": 265,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 8180,
+          "encoded": 7880,
+          "start": 188,
+          "end": 280,
+          "duration": 93
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 2848,
+          "encoded": 2548,
+          "start": 188,
+          "end": 281,
+          "duration": 93
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 8748,
+          "encoded": 8448,
+          "start": 188,
+          "end": 281,
+          "duration": 94
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 7273,
+          "encoded": 6973,
+          "start": 188,
+          "end": 297,
+          "duration": 109
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 19390,
+          "encoded": 19090,
+          "start": 283,
+          "end": 360,
+          "duration": 77
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 153416,
+          "encoded": 153116,
+          "start": 363,
+          "end": 700,
+          "duration": 337
+        },
+        {
+          "name": "http://127.0.0.1:4174/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 1455,
+          "encoded": 1155,
+          "start": 704,
+          "end": 747,
+          "duration": 44
+        },
+        {
+          "name": "http://127.0.0.1:4174/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 704,
+          "end": 870,
+          "duration": 166
+        }
+      ]
+    }
+  ]
+}

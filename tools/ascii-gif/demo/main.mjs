@@ -1,5 +1,6 @@
-import { decodeAsciiClip, frameAt, loadAsciiClip } from '../src/index.mjs?v=22'
-import { AsciiPlayer, measureCharAspect } from '../src/player.mjs?v=22'
+import { decodeAsciiClip, loadAsciiClip } from '../src/composite.mjs'
+import { frameAt } from '../src/grid.mjs'
+import { AsciiPlayer, measureCharAspect } from '../src/player.mjs'
 import {
   agentPrompt,
   buildRecipe,
@@ -9,7 +10,7 @@ import {
   recipeClip,
   recipeFileName,
   retuneRecipe,
-} from '../src/recipe.mjs?v=22'
+} from '../src/recipe.mjs'
 
 const gray = document.querySelector('#gray')
 const ascii = document.querySelector('#ascii')
@@ -258,6 +259,15 @@ function drawGrayCoverage(grid) {
     image.data[dest + 3] = value > 0 ? 255 : 0
   }
   grayCtx.putImageData(image, 0, 0)
+}
+
+async function loadDefaultClip(url, isDefault) {
+  if (isDefault && window.__defaultGif) {
+    const response = await window.__defaultGif
+    if (!response.ok) throw new Error(`GIF fetch failed: ${response.status}`)
+    return decodeAsciiClip(await response.arrayBuffer())
+  }
+  return loadAsciiClip(url)
 }
 
 function downloadBlob(name, blob) {
@@ -517,13 +527,12 @@ const recipeUrl = params.get('recipe')
 const defaultGif = new URL('../../../assets/squidward.gif', import.meta.url).href
 const gifUrl = params.get('gif') || defaultGif
 try {
-  await document.fonts.load('20px VT323')
   if (recipeUrl) {
     const response = await fetch(recipeUrl)
     if (!response.ok) throw new Error(`Recipe fetch failed: ${response.status}`)
     await useRecipe(await response.text(), recipeUrl.split('/').pop())
   } else {
-    const initial = await loadAsciiClip(gifUrl)
+    const initial = await loadDefaultClip(gifUrl, !params.get('gif'))
     const initialName = params.get('gif') ? params.get('gif').split('/').pop() : 'squidward.gif'
     useClip(initial, initialName)
   }

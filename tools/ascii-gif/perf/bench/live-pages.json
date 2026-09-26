@@ -1,0 +1,1499 @@
+{
+  "url": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/",
+  "throttle": false,
+  "summary": {
+    "n": 10,
+    "usable_p50": 2700,
+    "usable_p75": 2760,
+    "usable_p95": 3371,
+    "usable_min": 2634,
+    "usable_max": 3856,
+    "ttfb_p75": 769,
+    "requests": 16,
+    "transferBytes": 141874,
+    "encodedBytes": 139538,
+    "longTaskMs_p75": 0
+  },
+  "runs": [
+    {
+      "usable": 3856,
+      "ttfb": 890,
+      "domContentLoaded": 2796,
+      "load": 3339,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 896,
+          "end": 1724,
+          "duration": 828
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 896,
+          "end": 1725,
+          "duration": 828
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1744,
+          "end": 2082,
+          "duration": 338
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1744,
+          "end": 2095,
+          "duration": 351
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1744,
+          "end": 2097,
+          "duration": 354
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 2098,
+          "end": 2350,
+          "duration": 252
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 2098,
+          "end": 2350,
+          "duration": 252
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 2096,
+          "end": 2413,
+          "duration": 317
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 2098,
+          "end": 2416,
+          "duration": 318
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 2098,
+          "end": 2443,
+          "duration": 345
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 2083,
+          "end": 2445,
+          "duration": 362
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 2445,
+          "end": 2793,
+          "duration": 349
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 2796,
+          "end": 3337,
+          "duration": 541
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 3340,
+          "end": 3761,
+          "duration": 422
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 3340,
+          "end": 3771,
+          "duration": 431
+        }
+      ]
+    },
+    {
+      "usable": 2659,
+      "ttfb": 749,
+      "domContentLoaded": 1803,
+      "load": 2272,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 753,
+          "end": 1029,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 753,
+          "end": 1038,
+          "duration": 285
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1048,
+          "end": 1290,
+          "duration": 242
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1048,
+          "end": 1309,
+          "duration": 261
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1048,
+          "end": 1322,
+          "duration": 274
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1291,
+          "end": 1549,
+          "duration": 259
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1291,
+          "end": 1554,
+          "duration": 263
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1291,
+          "end": 1569,
+          "duration": 278
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1291,
+          "end": 1570,
+          "duration": 279
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1291,
+          "end": 1581,
+          "duration": 290
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1291,
+          "end": 1581,
+          "duration": 290
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1551,
+          "end": 1800,
+          "duration": 250
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1803,
+          "end": 2270,
+          "duration": 468
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2273,
+          "end": 2612,
+          "duration": 339
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2274,
+          "end": 2619,
+          "duration": 345
+        }
+      ]
+    },
+    {
+      "usable": 2767,
+      "ttfb": 760,
+      "domContentLoaded": 1882,
+      "load": 2360,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 764,
+          "end": 1048,
+          "duration": 284
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 764,
+          "end": 1048,
+          "duration": 284
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1067,
+          "end": 1317,
+          "duration": 250
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1067,
+          "end": 1330,
+          "duration": 262
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1068,
+          "end": 1344,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1318,
+          "end": 1582,
+          "duration": 264
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1318,
+          "end": 1586,
+          "duration": 268
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1318,
+          "end": 1614,
+          "duration": 296
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1318,
+          "end": 1614,
+          "duration": 295
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1318,
+          "end": 1626,
+          "duration": 308
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1318,
+          "end": 1627,
+          "duration": 308
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1628,
+          "end": 1879,
+          "duration": 251
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1882,
+          "end": 2358,
+          "duration": 476
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2361,
+          "end": 2719,
+          "duration": 359
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2361,
+          "end": 2728,
+          "duration": 367
+        }
+      ]
+    },
+    {
+      "usable": 2683,
+      "ttfb": 756,
+      "domContentLoaded": 1820,
+      "load": 2289,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 760,
+          "end": 999,
+          "duration": 239
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 760,
+          "end": 1030,
+          "duration": 270
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1032,
+          "end": 1276,
+          "duration": 244
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1032,
+          "end": 1286,
+          "duration": 254
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1032,
+          "end": 1286,
+          "duration": 253
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1277,
+          "end": 1535,
+          "duration": 258
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1277,
+          "end": 1536,
+          "duration": 259
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1277,
+          "end": 1552,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1277,
+          "end": 1553,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1277,
+          "end": 1566,
+          "duration": 289
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1277,
+          "end": 1566,
+          "duration": 289
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1567,
+          "end": 1817,
+          "duration": 250
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1820,
+          "end": 2287,
+          "duration": 467
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2290,
+          "end": 2633,
+          "duration": 343
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2290,
+          "end": 2641,
+          "duration": 351
+        }
+      ]
+    },
+    {
+      "usable": 2701,
+      "ttfb": 751,
+      "domContentLoaded": 1798,
+      "load": 2263,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 756,
+          "end": 1000,
+          "duration": 244
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 756,
+          "end": 1022,
+          "duration": 266
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1024,
+          "end": 1275,
+          "duration": 251
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1024,
+          "end": 1299,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1024,
+          "end": 1300,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1276,
+          "end": 1537,
+          "duration": 262
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1276,
+          "end": 1555,
+          "duration": 280
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1276,
+          "end": 1556,
+          "duration": 280
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1276,
+          "end": 1556,
+          "duration": 280
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1276,
+          "end": 1570,
+          "duration": 294
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1276,
+          "end": 1570,
+          "duration": 294
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1539,
+          "end": 1795,
+          "duration": 256
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1798,
+          "end": 2260,
+          "duration": 462
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2263,
+          "end": 2650,
+          "duration": 386
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2264,
+          "end": 2650,
+          "duration": 386
+        }
+      ]
+    },
+    {
+      "usable": 2634,
+      "ttfb": 732,
+      "domContentLoaded": 1768,
+      "load": 2240,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 737,
+          "end": 974,
+          "duration": 237
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 737,
+          "end": 1003,
+          "duration": 266
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1005,
+          "end": 1247,
+          "duration": 242
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1005,
+          "end": 1250,
+          "duration": 245
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1005,
+          "end": 1280,
+          "duration": 275
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1249,
+          "end": 1482,
+          "duration": 233
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1249,
+          "end": 1497,
+          "duration": 249
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1248,
+          "end": 1513,
+          "duration": 265
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1249,
+          "end": 1514,
+          "duration": 266
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1249,
+          "end": 1514,
+          "duration": 265
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1248,
+          "end": 1523,
+          "duration": 275
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1516,
+          "end": 1765,
+          "duration": 249
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1768,
+          "end": 2239,
+          "duration": 471
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2242,
+          "end": 2483,
+          "duration": 241
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2241,
+          "end": 2587,
+          "duration": 345
+        }
+      ]
+    },
+    {
+      "usable": 2660,
+      "ttfb": 759,
+      "domContentLoaded": 1797,
+      "load": 2262,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 764,
+          "end": 1008,
+          "duration": 244
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 765,
+          "end": 1027,
+          "duration": 262
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1028,
+          "end": 1274,
+          "duration": 246
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1028,
+          "end": 1304,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1028,
+          "end": 1304,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1275,
+          "end": 1523,
+          "duration": 249
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1275,
+          "end": 1539,
+          "duration": 264
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1275,
+          "end": 1554,
+          "duration": 279
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1275,
+          "end": 1554,
+          "duration": 280
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1275,
+          "end": 1554,
+          "duration": 279
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1275,
+          "end": 1564,
+          "duration": 289
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1540,
+          "end": 1793,
+          "duration": 253
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1797,
+          "end": 2260,
+          "duration": 463
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2263,
+          "end": 2517,
+          "duration": 254
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2263,
+          "end": 2613,
+          "duration": 350
+        }
+      ]
+    },
+    {
+      "usable": 2778,
+      "ttfb": 861,
+      "domContentLoaded": 1913,
+      "load": 2382,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 866,
+          "end": 1110,
+          "duration": 244
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 866,
+          "end": 1132,
+          "duration": 266
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1134,
+          "end": 1384,
+          "duration": 249
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1134,
+          "end": 1407,
+          "duration": 273
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1134,
+          "end": 1411,
+          "duration": 276
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1384,
+          "end": 1650,
+          "duration": 265
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1385,
+          "end": 1659,
+          "duration": 275
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1385,
+          "end": 1659,
+          "duration": 275
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1385,
+          "end": 1669,
+          "duration": 285
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1384,
+          "end": 1670,
+          "duration": 285
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1384,
+          "end": 1684,
+          "duration": 300
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1651,
+          "end": 1910,
+          "duration": 259
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1913,
+          "end": 2379,
+          "duration": 467
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2383,
+          "end": 2727,
+          "duration": 345
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2383,
+          "end": 2736,
+          "duration": 353
+        }
+      ]
+    },
+    {
+      "usable": 2698,
+      "ttfb": 762,
+      "domContentLoaded": 1864,
+      "load": 2310,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 767,
+          "end": 1020,
+          "duration": 253
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 767,
+          "end": 1029,
+          "duration": 262
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1039,
+          "end": 1292,
+          "duration": 254
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1039,
+          "end": 1316,
+          "duration": 277
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1039,
+          "end": 1319,
+          "duration": 281
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1293,
+          "end": 1562,
+          "duration": 269
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1293,
+          "end": 1568,
+          "duration": 275
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1293,
+          "end": 1578,
+          "duration": 285
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1293,
+          "end": 1590,
+          "duration": 297
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1293,
+          "end": 1590,
+          "duration": 297
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1293,
+          "end": 1601,
+          "duration": 308
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1591,
+          "end": 1861,
+          "duration": 270
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1864,
+          "end": 2308,
+          "duration": 443
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2311,
+          "end": 2652,
+          "duration": 341
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2311,
+          "end": 2661,
+          "duration": 350
+        }
+      ]
+    },
+    {
+      "usable": 2741,
+      "ttfb": 771,
+      "domContentLoaded": 1855,
+      "load": 2343,
+      "transferBytes": 141874,
+      "encodedBytes": 139538,
+      "requests": 16,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "resources": [
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/styles.css?v=22",
+          "type": "link",
+          "transferSize": 2680,
+          "encoded": 2380,
+          "start": 775,
+          "end": 1020,
+          "duration": 245
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/main.mjs?v=22",
+          "type": "script",
+          "transferSize": 4947,
+          "encoded": 4647,
+          "start": 775,
+          "end": 1040,
+          "duration": 265
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/index.mjs?v=22",
+          "type": "script",
+          "transferSize": 588,
+          "encoded": 288,
+          "start": 1042,
+          "end": 1310,
+          "duration": 269
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs?v=22",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1042,
+          "end": 1312,
+          "duration": 270
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs?v=22",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1042,
+          "end": 1312,
+          "duration": 270
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/player.mjs",
+          "type": "script",
+          "transferSize": 2810,
+          "encoded": 2510,
+          "start": 1312,
+          "end": 1566,
+          "duration": 254
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/recipe.mjs",
+          "type": "script",
+          "transferSize": 2771,
+          "encoded": 2471,
+          "start": 1312,
+          "end": 1566,
+          "duration": 254
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/composite.mjs",
+          "type": "script",
+          "transferSize": 2793,
+          "encoded": 2493,
+          "start": 1312,
+          "end": 1592,
+          "duration": 280
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/glyphs.mjs",
+          "type": "script",
+          "transferSize": 784,
+          "encoded": 484,
+          "start": 1312,
+          "end": 1605,
+          "duration": 294
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/grid.mjs",
+          "type": "script",
+          "transferSize": 1965,
+          "encoded": 1665,
+          "start": 1312,
+          "end": 1606,
+          "duration": 294
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/src/mount.mjs",
+          "type": "script",
+          "transferSize": 1217,
+          "encoded": 917,
+          "start": 1312,
+          "end": 1606,
+          "duration": 294
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/vendor/gifuct.mjs",
+          "type": "script",
+          "transferSize": 4492,
+          "encoded": 4192,
+          "start": 1593,
+          "end": 1852,
+          "duration": 258
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/fonts/VT323-Regular.ttf",
+          "type": "css",
+          "transferSize": 45002,
+          "encoded": 44702,
+          "start": 1855,
+          "end": 2341,
+          "duration": 487
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/assets/squidward.gif",
+          "type": "fetch",
+          "transferSize": 65685,
+          "encoded": 65385,
+          "start": 2344,
+          "end": 2690,
+          "duration": 346
+        },
+        {
+          "name": "https://aimer779.github.io/404-copy/tools/ascii-gif/demo/favicon.svg",
+          "type": "other",
+          "transferSize": 559,
+          "encoded": 259,
+          "start": 2345,
+          "end": 2702,
+          "duration": 357
+        }
+      ]
+    }
+  ]
+}
