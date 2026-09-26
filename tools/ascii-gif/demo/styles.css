@@ -45,9 +45,15 @@ a { color: inherit; }
 }
 .brand-block {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
   min-width: 0;
+}
+.brand-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  display: block;
 }
 .brand {
   font-size: 13px;
