@@ -11,7 +11,7 @@ export function measureCharAspect(font, sample = '0') {
 
 export class AsciiPlayer {
   constructor(canvas, clip, options = {}) {
-    if (!canvas || typeof canvas.getContext !== 'function') throw new Error('需要 canvas。')
+    if (!canvas || typeof canvas.getContext !== 'function') throw new Error('A canvas is required.')
     this.canvas = canvas
     this.ctx = canvas.getContext('2d', { alpha: true })
     this.clipData = clip

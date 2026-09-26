@@ -56,7 +56,7 @@ test('a GIF clip exports a small look recipe without pixel grids', () => {
   const parsed = parseRecipe(json)
   assert.equal(parsed.look.color, '#112233')
   assert.equal(parsed.look.columns, 24)
-  assert.throws(() => hydrateRecipe(parsed), /需要原 GIF/)
+  assert.throws(() => hydrateRecipe(parsed), /original GIF is required/)
 })
 
 test('retune updates play-time color', () => {
@@ -75,17 +75,17 @@ test('agent prompt asks for the GIF and mountAsciiGif', () => {
   assert.match(text, /mountAsciiGif/)
   assert.match(text, /disposal-ascii\.json/)
   assert.match(text, /disposal\.gif/)
-  assert.match(text, /原 GIF/)
+  assert.match(text, /original GIF/)
   assert.doesNotMatch(text, /clip\.frames/)
 })
 
 test('invalid recipes are rejected', () => {
-  assert.throws(() => parseRecipe('{"tool":"nope"}'), /不是 ascii-gif 配方/)
-  assert.throws(() => parseRecipe({ tool: 'ascii-gif', version: 2 }), /不支持的配方版本/)
+  assert.throws(() => parseRecipe('{"tool":"nope"}'), /Not an ascii-gif recipe/)
+  assert.throws(() => parseRecipe({ tool: 'ascii-gif', version: 2 }), /Unsupported recipe version/)
   assert.throws(() => hydrateRecipe({
     tool: 'ascii-gif',
     version: 1,
     look: { columns: 2, rows: 2, charAspect: 0.5 },
     clip: { frames: [{ delay: 100, coverage: 'AQID' }] },
-  }), /配方帧尺寸/)
+  }), /Recipe frame size/)
 })

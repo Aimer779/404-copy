@@ -3,7 +3,7 @@ import { AsciiPlayer } from './player.mjs'
 import { hydrateRecipe, parseRecipe, recipeClip } from './recipe.mjs'
 
 export async function mountAsciiGif(target, gifSource, recipe, options = {}) {
-  if (typeof document === 'undefined') throw new Error('mountAsciiGif 需要浏览器。')
+  if (typeof document === 'undefined') throw new Error('mountAsciiGif needs a browser.')
   const parsed = parseRecipe(recipe)
   const look = parsed.look
   const clip = await loadAsciiClip(gifSource, { pixelColumns: look.pixelColumns ?? 360 })
@@ -13,7 +13,7 @@ export async function mountAsciiGif(target, gifSource, recipe, options = {}) {
 }
 
 export function mountAsciiRecipe(target, recipe, options = {}) {
-  if (typeof document === 'undefined') throw new Error('mountAsciiRecipe 需要浏览器。')
+  if (typeof document === 'undefined') throw new Error('mountAsciiRecipe needs a browser.')
   const hydrated = hydrateRecipe(recipe)
   const look = hydrated.look
   const canvas = ensureCanvas(target, look, options)
@@ -59,7 +59,7 @@ function startClock(player, recipe, look, options) {
 
 function ensureCanvas(target, look, options) {
   if (target && typeof target.getContext === 'function') return target
-  if (!target || typeof target.appendChild !== 'function') throw new Error('需要 canvas 或容器。')
+  if (!target || typeof target.appendChild !== 'function') throw new Error('A canvas or container is required.')
   const canvas = document.createElement('canvas')
   canvas.style.width = '100%'
   canvas.style.height = '100%'

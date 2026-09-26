@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=18" />
+    <link rel="stylesheet" href="./styles.css?v=19" />
   </head>
   <body>
     <div class="shell">
@@ -21,7 +21,7 @@
             <canvas id="ascii" class="absolute inset no-pointer"></canvas>
           </div>
           <div class="transport">
-            <button id="pause" class="icon-btn" type="button" aria-label="暂停" data-tooltip="暂停">
+            <button id="pause" class="icon-btn" type="button" aria-label="Pause" data-tooltip="Pause">
               <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="14" y="4" width="4" height="16" rx="1" />
                 <rect x="6" y="4" width="4" height="16" rx="1" />
@@ -30,10 +30,10 @@
                 <path d="M5 5v14l14-7Z" />
               </svg>
             </button>
-            <input id="frame" type="range" min="0" max="0" value="0" aria-label="帧" />
+            <input id="frame" type="range" min="0" max="0" value="0" aria-label="Frame" />
             <span id="frame-value">1/1</span>
             <span class="transport-split" aria-hidden="true"></span>
-            <button id="choose-gif" class="icon-btn" type="button" aria-label="导入 GIF" data-tooltip="导入 GIF">
+            <button id="choose-gif" class="icon-btn" type="button" aria-label="Import GIF" data-tooltip="Import GIF">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <polyline points="17 8 12 3 7 8" />
@@ -41,7 +41,7 @@
               </svg>
             </button>
             <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
-            <button id="choose-recipe" class="icon-btn" type="button" aria-label="导入配方" data-tooltip="导入配方">
+            <button id="choose-recipe" class="icon-btn" type="button" aria-label="Import recipe" data-tooltip="Import recipe">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                 <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -50,7 +50,7 @@
               </svg>
             </button>
             <input id="recipe-file" type="file" accept=".json,application/json" hidden />
-            <button id="copy-agent" class="icon-btn" type="button" aria-label="复制给 Agent" data-tooltip="复制给 Agent">
+            <button id="copy-agent" class="icon-btn" type="button" aria-label="Copy for Agent" data-tooltip="Copy for Agent">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -58,14 +58,14 @@
                 <path d="M9 16h6" />
               </svg>
             </button>
-            <button id="export-png" class="icon-btn" type="button" aria-label="导出 PNG" data-tooltip="导出 PNG">
+            <button id="export-png" class="icon-btn" type="button" aria-label="Export PNG" data-tooltip="Export PNG">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
                 <circle cx="9" cy="9" r="2" />
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
               </svg>
             </button>
-            <button id="export-recipe" class="icon-btn primary" type="button" aria-label="导出配方" data-tooltip="导出配方">
+            <button id="export-recipe" class="icon-btn primary" type="button" aria-label="Export recipe" data-tooltip="Export recipe">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                 <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -79,11 +79,11 @@
           <section class="group">
             <h2>/ CHARACTERS</h2>
             <div class="field">
-              <div class="field-label"><span>列数</span><span id="columns-value">110</span></div>
+              <div class="field-label"><span>Columns</span><span id="columns-value">110</span></div>
               <input id="columns" type="range" min="40" max="160" value="110" />
             </div>
             <label class="field">
-              <span class="field-label">字体</span>
+              <span class="field-label">Font</span>
               <select id="font">
                 <option value="consolas" selected>Consolas</option>
                 <option value="cascadia">Cascadia Mono</option>
@@ -93,18 +93,18 @@
               </select>
             </label>
             <label class="field">
-              <span class="field-label">字符</span>
+              <span class="field-label">Glyphs</span>
               <select id="glyphs">
                 <option value="binary" selected>01</option>
-                <option value="ascii">@%#* 字形</option>
-                <option value="block">█▓▒░ 字块</option>
-                <option value="mixed">@▓#* 混合</option>
-                <option value="braille">⣿ 点字</option>
+                <option value="ascii">@%#* glyphs</option>
+                <option value="block">█▓▒░ blocks</option>
+                <option value="mixed">@▓#* mixed</option>
+                <option value="braille">⣿ braille</option>
                 <option value="ox">OX</option>
               </select>
             </label>
             <div class="field">
-              <span class="field-label">颜色</span>
+              <span class="field-label">Color</span>
               <label class="color-row">
                 <input id="color" type="color" value="#f3f3f3" />
                 <span id="color-hex">#F3F3F3</span>
@@ -114,8 +114,8 @@
           <section class="group">
             <h2>/ BACKDROP</h2>
             <div class="mass-toggle">
-              <button id="light-mass" type="button">白块</button>
-              <button id="dark-mass" class="is-on" type="button">黑块</button>
+              <button id="light-mass" type="button">Light</button>
+              <button id="dark-mass" class="is-on" type="button">Dark</button>
             </div>
           </section>
           <section class="group">
@@ -123,7 +123,7 @@
             <div class="preview relative clip">
               <canvas id="gray" class="absolute inset no-pointer"></canvas>
             </div>
-            <p class="sources"><a href="./">章鱼哥</a> · <a href="?gif=../fixtures/bust.gif">半身像</a> · <a href="?gif=../fixtures/disposal.gif">处置测试</a></p>
+            <p class="sources"><a href="./">Squidward</a> · <a href="?gif=../fixtures/bust.gif">Bust</a> · <a href="?gif=../fixtures/disposal.gif">Disposal</a></p>
           </section>
         </aside>
       </div>
@@ -131,18 +131,18 @@
     <dialog id="recipe-panel" class="recipe-panel" aria-labelledby="recipe-panel-title">
       <div class="recipe-head">
         <div>
-          <h2 id="recipe-panel-title">配方</h2>
+          <h2 id="recipe-panel-title">Recipe</h2>
           <p id="recipe-file-label"></p>
         </div>
-        <button id="recipe-close" class="ghost" type="button">关闭</button>
+        <button id="recipe-close" class="ghost" type="button">Close</button>
       </div>
       <textarea id="recipe-json" spellcheck="false"></textarea>
       <div class="recipe-foot">
         <p id="recipe-note" role="status"></p>
-        <button id="recipe-download" class="ghost" type="button">下载</button>
-        <button id="recipe-copy" class="primary" type="button">复制</button>
+        <button id="recipe-download" class="ghost" type="button">Download</button>
+        <button id="recipe-copy" class="primary" type="button">Copy</button>
       </div>
     </dialog>
-    <script type="module" src="./main.mjs?v=18"></script>
+    <script type="module" src="./main.mjs?v=19"></script>
   </body>
 </html>

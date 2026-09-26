@@ -1,5 +1,5 @@
-import { decodeAsciiClip, frameAt, loadAsciiClip } from '../src/index.mjs?v=18'
-import { AsciiPlayer, measureCharAspect } from '../src/player.mjs?v=18'
+import { decodeAsciiClip, frameAt, loadAsciiClip } from '../src/index.mjs?v=19'
+import { AsciiPlayer, measureCharAspect } from '../src/player.mjs?v=19'
 import {
   agentPrompt,
   buildRecipe,
@@ -9,7 +9,7 @@ import {
   recipeClip,
   recipeFileName,
   retuneRecipe,
-} from '../src/recipe.mjs?v=18'
+} from '../src/recipe.mjs?v=19'
 
 const gray = document.querySelector('#gray')
 const ascii = document.querySelector('#ascii')
@@ -66,7 +66,7 @@ function flashStatus(message) {
 
 function setPaused(next) {
   paused = next
-  const label = paused ? '继续' : '暂停'
+  const label = paused ? 'Play' : 'Pause'
   pauseButton.classList.toggle('is-paused', paused)
   pauseButton.setAttribute('aria-label', label)
   pauseButton.dataset.tooltip = label
@@ -105,7 +105,7 @@ function currentLook() {
 function snapshotRecipe() {
   if (clip) return buildRecipe({ clip, look: currentLook(), sourceName })
   if (recipe) return retuneRecipe(recipe, playTimeLook())
-  throw new Error('没有可导出的画面。')
+  throw new Error('Nothing to export.')
 }
 
 function prettyRecipe(data) {
@@ -324,7 +324,7 @@ function render() {
     status.textContent = statusNote
     return
   }
-  status.textContent = `${sourceName} · ${source.frames.length}帧 · ${grid.columns}×${grid.rows}`
+  status.textContent = `${sourceName} · ${source.frames.length} frames · ${grid.columns}×${grid.rows}`
 }
 
 function resetClock(frameCount) {
@@ -388,7 +388,7 @@ async function useRecipe(next, name) {
     render()
     return
   }
-  statusNote = '配方已加载。导入原 GIF 后按此设定播放。'
+  statusNote = 'Recipe loaded. Import the original GIF to play it.'
   status.textContent = statusNote
 }
 
@@ -408,7 +408,7 @@ columnsInput.addEventListener('input', () => {
   }
   if (recipe) {
     columnsInput.value = String(recipe.look.columns)
-    statusNote = '列数已写入配方。要改取样，先导入原 GIF。'
+    statusNote = 'Columns are stored in the recipe. Import the original GIF to resample.'
   }
 })
 fontSelect.addEventListener('change', () => { applyFont() })
@@ -455,7 +455,7 @@ document.querySelector('#recipe-copy').addEventListener('click', async () => {
   try {
     const next = applyEditorText()
     await copyText(recipeJson.value)
-    flashPanelNote(next ? `已复制 ${panelFileName}` : '已复制文本')
+    flashPanelNote(next ? `Copied ${panelFileName}` : 'Copied text')
   } catch (error) {
     flashPanelNote(error.message)
   }
@@ -463,12 +463,12 @@ document.querySelector('#recipe-copy').addEventListener('click', async () => {
 document.querySelector('#recipe-download').addEventListener('click', () => {
   downloadBlob(panelFileName, new Blob([recipeJson.value], { type: 'application/json;charset=utf-8' }))
   const next = applyEditorText()
-  flashPanelNote(next ? `已下载 ${panelFileName}` : `已下载，${recipeNote.textContent}`)
+  flashPanelNote(next ? `Downloaded ${panelFileName}` : `Downloaded, ${recipeNote.textContent}`)
 })
 document.querySelector('#copy-agent').addEventListener('click', async () => {
   try {
     const name = await copyAgentPrompt()
-    flashStatus(`已复制说明，并下载 ${name}`)
+    flashStatus(`Copied the agent prompt and downloaded ${name}`)
   } catch (error) {
     statusNote = error.message
     status.textContent = statusNote
@@ -478,14 +478,14 @@ gifFile.addEventListener('change', async () => {
   const file = gifFile.files?.[0]
   gifFile.value = ''
   if (!file) return
-  statusNote = `正在转换 ${file.name}`
+  statusNote = `Converting ${file.name}`
   status.textContent = statusNote
   try {
     const bytes = await file.arrayBuffer()
     statusNote = ''
     useClip(decodeAsciiClip(bytes), file.name)
   } catch (error) {
-    statusNote = `${file.name} 无法转换：${error.message}`
+    statusNote = `Could not convert ${file.name}: ${error.message}`
     status.textContent = statusNote
   }
 })
@@ -493,13 +493,13 @@ recipeFile.addEventListener('change', async () => {
   const file = recipeFile.files?.[0]
   recipeFile.value = ''
   if (!file) return
-  statusNote = `正在读取 ${file.name}`
+  statusNote = `Reading ${file.name}`
   status.textContent = statusNote
   try {
     const text = await file.text()
     await useRecipe(text, file.name)
   } catch (error) {
-    statusNote = `${file.name} 无法导入：${error.message}`
+    statusNote = `Could not import ${file.name}: ${error.message}`
     status.textContent = statusNote
   }
 })
@@ -517,7 +517,7 @@ try {
   await document.fonts.load('20px VT323')
   if (recipeUrl) {
     const response = await fetch(recipeUrl)
-    if (!response.ok) throw new Error(`配方读取失败：${response.status}`)
+    if (!response.ok) throw new Error(`Recipe fetch failed: ${response.status}`)
     await useRecipe(await response.text(), recipeUrl.split('/').pop())
   } else {
     const initial = await loadAsciiClip(gifUrl)

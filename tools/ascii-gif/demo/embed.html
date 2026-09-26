@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +18,7 @@
   </head>
   <body>
     <div id="ascii-slot"></div>
-    <p id="status" role="status">需要 ?recipe=配方.json</p>
+    <p id="status" role="status">Needs ?recipe=recipe.json</p>
     <script type="module">
       import { hasBakedFrames } from '../src/recipe.mjs'
       import { mountAsciiGif, mountAsciiRecipe } from '../src/mount.mjs'
@@ -29,18 +29,18 @@
       const url = params.get('recipe')
       const gif = params.get('gif')
       if (!url) {
-        status.textContent = '打开 embed.html?recipe=./your-ascii.json&gif=../../../assets/squidward.gif'
+        status.textContent = 'Open embed.html?recipe=./your-ascii.json&gif=../../../assets/squidward.gif'
       } else {
         try {
           const recipe = await fetch(url).then((response) => {
-            if (!response.ok) throw new Error(`读取失败：${response.status}`)
+            if (!response.ok) throw new Error(`Fetch failed: ${response.status}`)
             return response.json()
           })
           slot.style.setProperty('--aspect', String(recipe.look.aspect || 1))
           if (hasBakedFrames(recipe)) mountAsciiRecipe(slot, recipe)
           else {
             const gifUrl = gif || recipe.source?.name
-            if (!gifUrl) throw new Error('这份配方需要原 GIF，加上 ?gif=')
+            if (!gifUrl) throw new Error('This recipe needs the original GIF. Add ?gif=')
             await mountAsciiGif(slot, gifUrl, recipe)
           }
           status.textContent = `${recipe.source?.name || url} · ${recipe.look.columns}×${recipe.look.rows}`

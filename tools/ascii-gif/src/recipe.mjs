@@ -26,7 +26,7 @@ export function bytesToBase64(bytes) {
 }
 
 export function base64ToBytes(text) {
-  if (typeof text !== 'string' || !text) throw new Error('配方帧缺少 coverage。')
+  if (typeof text !== 'string' || !text) throw new Error('Recipe frame is missing coverage.')
   if (typeof Buffer !== 'undefined') return new Uint8Array(Buffer.from(text, 'base64'))
   const binary = atob(text)
   const out = new Uint8Array(binary.length)
@@ -39,7 +39,7 @@ export function hasBakedFrames(recipe) {
 }
 
 export function buildRecipe({ clip, look, sourceName = '' }) {
-  if (!clip?.frames?.length) throw new Error('没有可导出的画面。')
+  if (!clip?.frames?.length) throw new Error('Nothing to export.')
   const columns = Math.max(8, Math.min(400, Math.round(Number(look.columns) || 110)))
   const charAspect = Number(look.charAspect) > 0 ? Number(look.charAspect) : 0.5
   const box = clip.content ?? { width: clip.pixelColumns, height: clip.pixelRows }
@@ -79,22 +79,22 @@ export function buildRecipe({ clip, look, sourceName = '' }) {
       gif: gifName || 'user.gif',
       modules: MODULES,
       vendor: 'vendor/gifuct.mjs',
-      note: '把用户的 GIF 和这份配方一起交给 ascii-gif。用工具解码 GIF，按 look 播放。',
+      note: 'Give ascii-gif the original GIF and this recipe. Decode the GIF with the tool and play it with look.',
     },
   }
 }
 
 export function parseRecipe(input) {
   const data = asObject(input)
-  if (data.tool !== RECIPE_TOOL) throw new Error('不是 ascii-gif 配方。')
-  if (data.version !== RECIPE_VERSION) throw new Error(`不支持的配方版本：${data.version}`)
+  if (data.tool !== RECIPE_TOOL) throw new Error('Not an ascii-gif recipe.')
+  if (data.version !== RECIPE_VERSION) throw new Error(`Unsupported recipe version: ${data.version}`)
   const look = data.look
-  if (!look || !Number.isFinite(look.columns)) throw new Error('配方缺少列数。')
-  if (!(look.charAspect > 0)) throw new Error('配方缺少字符宽高比。')
+  if (!look || !Number.isFinite(look.columns)) throw new Error('Recipe is missing columns.')
+  if (!(look.charAspect > 0)) throw new Error('Recipe is missing character aspect.')
   if (hasBakedFrames(data)) {
     for (const frame of data.clip.frames) {
-      if (!Number.isFinite(frame.delay) || frame.delay < 0) throw new Error('配方帧时长无效。')
-      if (typeof frame.coverage !== 'string' || !frame.coverage) throw new Error('配方帧缺少 coverage。')
+      if (!Number.isFinite(frame.delay) || frame.delay < 0) throw new Error('Invalid frame delay.')
+      if (typeof frame.coverage !== 'string' || !frame.coverage) throw new Error('Recipe frame is missing coverage.')
     }
   }
   return data
@@ -102,7 +102,7 @@ export function parseRecipe(input) {
 
 export function hydrateRecipe(input) {
   const parsed = parseRecipe(input)
-  if (!hasBakedFrames(parsed)) throw new Error('这份配方没有烘焙帧，需要原 GIF。')
+  if (!hasBakedFrames(parsed)) throw new Error('This recipe has no baked frames. The original GIF is required.')
   const size = parsed.look.columns * parsed.look.rows
   return {
     ...parsed,
@@ -111,7 +111,7 @@ export function hydrateRecipe(input) {
       frames: parsed.clip.frames.map((frame) => {
         const coverage = base64ToBytes(frame.coverage)
         if (coverage.length !== size) {
-          throw new Error(`配方帧尺寸不是 ${parsed.look.columns}×${parsed.look.rows}。`)
+          throw new Error(`Recipe frame size is not ${parsed.look.columns}×${parsed.look.rows}.`)
         }
         return { delay: frame.delay, coverage }
       }),
@@ -148,29 +148,29 @@ export function agentPrompt(recipe, fileName) {
   const look = parsed.look
   const name = fileName || recipeFileName(parsed.source?.name)
   const gifName = parsed.source?.name || parsed.handoff?.gif || 'user.gif'
-  return `把用户上传的 GIF 做成 ASCII 动画，装进当前站点。
+  return `Mount this GIF as an ASCII animation on the current site.
 
-必须同时拿到三样东西：
-1. 用户的原 GIF（${gifName}）
-2. 这份配方 JSON（${name}）
-3. ascii-gif 工具：src 目录和 vendor/gifuct.mjs
+You need all three:
+1. The original GIF (${gifName})
+2. This recipe JSON (${name})
+3. The ascii-gif tool: the src/ directory and vendor/gifuct.mjs
 
-不要另写 ASCII 渲染器，不要把像素网格写进 JSON。用工具解码 GIF，按配方的 look 播放。
+Do not write a new ASCII renderer. Do not bake pixel grids into JSON. Decode the GIF with this tool and play it with the recipe look.
 
-配方：ascii-gif v${parsed.version}
-来源：${gifName}，${parsed.source?.width || '?'}×${parsed.source?.height || '?'}，${parsed.source?.frameCount || '?'} 帧
-画面：${look.columns} 列 × ${look.rows} 行
-字体：${look.font}
-字符：${look.glyphs || 'binary'}
-墨色：${look.color}
-底色：${look.mass}
-字符宽高比：${look.charAspect}
+Recipe: ascii-gif v${parsed.version}
+Source: ${gifName}, ${parsed.source?.width || '?'}×${parsed.source?.height || '?'}, ${parsed.source?.frameCount || '?'} frames
+Grid: ${look.columns} columns × ${look.rows} rows
+Font: ${look.font}
+Glyphs: ${look.glyphs || 'binary'}
+Ink: ${look.color}
+Mass: ${look.mass}
+Character aspect: ${look.charAspect}
 
-步骤：
-1. 把 ascii-gif 的 src/ 和 vendor/gifuct.mjs 拷到站点里。
-2. 把 ${gifName} 和 ${name} 放到页面能 fetch 到的位置。
-3. 容器要有明确宽高或 aspect-ratio。推荐 aspect-ratio: ${look.aspect}。
-4. 调用：
+Steps:
+1. Copy ascii-gif src/ and vendor/gifuct.mjs into the site.
+2. Place ${gifName} and ${name} where the page can fetch them.
+3. Give the host an explicit size or aspect-ratio. Recommended aspect-ratio: ${look.aspect}.
+4. Call:
 
 \`\`\`js
 import { mountAsciiGif } from './ascii-gif/mount.mjs'
@@ -179,9 +179,9 @@ const recipe = await fetch('./${name}').then((r) => r.json())
 mountAsciiGif(document.querySelector('#ascii-slot'), './${gifName}', recipe)
 \`\`\`
 
-5. look.color 和 look.mass 可以改成站点里的实色值。
-6. 列数、字体、charAspect 按配方传给播放器。要改取样，回到演示台调，再导出配方。
-7. 若字体不是系统字体，在页面里加载同一字体文件后再挂载。
+5. look.color and look.mass may use the site's resolved color values.
+6. Pass columns, font, charAspect, and glyphs from the recipe. To resample, go back to the demo, adjust, and export again.
+7. If the font is not a system font, load the same font file before mounting.
 `
 }
 
@@ -190,9 +190,9 @@ function asObject(input) {
     try {
       return JSON.parse(input)
     } catch {
-      throw new Error('配方不是有效的 JSON。')
+      throw new Error('Recipe is not valid JSON.')
     }
   }
-  if (!input || typeof input !== 'object') throw new Error('配方格式无效。')
+  if (!input || typeof input !== 'object') throw new Error('Invalid recipe format.')
   return input
 }

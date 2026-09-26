@@ -2,14 +2,14 @@ import gifuct from '../vendor/gifuct.mjs'
 
 const { parseGIF, decompressFrame } = gifuct
 
-const PATCH_ERROR = '帧上没有 patch。pixels 是颜色表索引，不能当作 RGBA。'
+const PATCH_ERROR = 'Frame has no patch. pixels is a color-table index, not RGBA.'
 
 function asArrayBuffer(input) {
   if (input instanceof ArrayBuffer) return input
   if (ArrayBuffer.isView(input)) {
     return input.buffer.slice(input.byteOffset, input.byteOffset + input.byteLength)
   }
-  throw new TypeError('GIF 需要 ArrayBuffer 或类型化数组。')
+  throw new TypeError('GIF must be an ArrayBuffer or typed array.')
 }
 
 function backgroundFrom(gif) {
@@ -182,7 +182,7 @@ export function decodeAsciiClip(input, options = {}) {
   const gif = parseGIF(asArrayBuffer(input))
   const width = gif.lsd.width
   const height = gif.lsd.height
-  if (!width || !height) throw new Error('GIF 画面尺寸无效。')
+  if (!width || !height) throw new Error('Invalid GIF dimensions.')
   const background = backgroundFrom(gif)
   const pixelColumns = Math.min(width, Math.max(1, options.pixelColumns ?? 360))
   const pixelRows = Math.max(1, Math.round(pixelColumns * height / width))
@@ -216,7 +216,7 @@ export function decodeAsciiClip(input, options = {}) {
       frame.pixels = null
     },
   })
-  if (!frames.length) throw new Error('GIF 里没有图像帧。')
+  if (!frames.length) throw new Error('GIF has no image frames.')
   const duration = frames.reduce((sum, frame) => sum + frame.delay, 0)
   const bytes = frames.reduce((sum, frame) => sum + frame.luma.byteLength + frame.alpha.byteLength, 0)
   return {
@@ -236,7 +236,7 @@ export function decodeAsciiClip(input, options = {}) {
 export async function loadAsciiClip(source, options) {
   if (typeof source === 'string') {
     const response = await fetch(source)
-    if (!response.ok) throw new Error(`GIF 读取失败：${response.status}`)
+    if (!response.ok) throw new Error(`GIF fetch failed: ${response.status}`)
     return decodeAsciiClip(await response.arrayBuffer(), options)
   }
   return decodeAsciiClip(source, options)
