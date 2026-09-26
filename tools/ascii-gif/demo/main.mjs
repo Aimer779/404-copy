@@ -1,5 +1,5 @@
-import { decodeAsciiClip, frameAt, loadAsciiClip } from '../src/index.mjs?v=19'
-import { AsciiPlayer, measureCharAspect } from '../src/player.mjs?v=19'
+import { decodeAsciiClip, frameAt, loadAsciiClip } from '../src/index.mjs?v=22'
+import { AsciiPlayer, measureCharAspect } from '../src/player.mjs?v=22'
 import {
   agentPrompt,
   buildRecipe,
@@ -9,7 +9,7 @@ import {
   recipeClip,
   recipeFileName,
   retuneRecipe,
-} from '../src/recipe.mjs?v=19'
+} from '../src/recipe.mjs?v=22'
 
 const gray = document.querySelector('#gray')
 const ascii = document.querySelector('#ascii')
@@ -49,7 +49,7 @@ let sourceKind = 'gif'
 let statusNote = ''
 let gifTime = 0
 let last = performance.now()
-let paused = reduced.matches
+let paused = true
 let scrubbing = false
 let noteTimer = 0
 let editorTimer = 0
@@ -334,7 +334,7 @@ function resetClock(frameCount) {
   gifTime = 0
   frameInput.max = String(Math.max(0, frameCount - 1))
   frameInput.value = '0'
-  setPaused(reduced.matches)
+  setPaused(true)
 }
 
 function useClip(next, name) {

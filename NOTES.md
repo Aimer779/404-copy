@@ -2,7 +2,7 @@
 
 ## ASCII 工具（2026-09-25）
 
-字符动画做在 `tools/ascii-gif/`。主页面用 `assets/squidward.gif`（章鱼哥，本地文件，`*.gif` 不进入 Git）在主体轮廓内播放，颜色跟随 `--ink`，换帧走 GIF 自己的时长。用法见该目录的 `README.md`。预览：
+字符动画做在 `tools/ascii-gif/`。主页面用 `assets/squidward.gif` 在主体轮廓内播放，颜色跟随 `--ink`，换帧走 GIF 自己的时长。公开演示：https://aimer779.github.io/404-copy/tools/ascii-gif/demo/ 。用法见该目录的 `README.md`。预览：
 
 ```powershell
 python -m http.server 4174 --bind 127.0.0.1

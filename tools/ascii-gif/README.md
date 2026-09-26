@@ -18,6 +18,14 @@ From `404-copy/`, serve the files:
 python -m http.server 4174 --bind 127.0.0.1
 ```
 
+Live: [https://aimer779.github.io/404-copy/tools/ascii-gif/demo/](https://aimer779.github.io/404-copy/tools/ascii-gif/demo/). The default subject is Squidward and playback starts paused.
+
+Locally, from `404-copy/`, serve the files:
+
+```powershell
+python -m http.server 4174 --bind 127.0.0.1
+```
+
 Open `http://127.0.0.1:4174/tools/ascii-gif/demo/`.
 
 - **Import GIF** reads a local file, converts it in the browser, and never uploads it.
