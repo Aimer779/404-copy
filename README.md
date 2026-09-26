@@ -12,9 +12,13 @@
 
 这是一个**纯浏览器**的 GIF → ASCII 动画工作台。把已经处理好的 GIF 拖进来，在页面上调成字符动画，再把设定交给你自己的 Agent，嵌进任意站点。文件不会上传到服务器。
 
-![ASCII GIF demo](docs/ascii-gif-demo.gif)
+![ASCII GIF demo](docs/ascii-gif-ui.gif)
 
-上面是整页工作台的录屏：顶栏、舞台、侧栏和底部悬浮条都在里面。公开演示默认暂停，点播放后像这样循环。
+上面是整页工作台录屏（顶栏、舞台、侧栏、底部悬浮条）。演示素材为自行提供的 GIF，无商业版权风险。
+
+## 许可证
+
+本仓库代码与文档以 [MIT License](LICENSE) 发布。`docs/` 中的演示 GIF 是工具界面录屏；`assets/squidward.gif` 仅作本地 404 页参考，不作为可再分发素材。
 
 ### 你在页面上能做的事
 
