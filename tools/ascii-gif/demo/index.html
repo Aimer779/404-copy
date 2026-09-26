@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=10" />
+    <link rel="stylesheet" href="./styles.css?v=12" />
   </head>
   <body>
     <div class="shell">
@@ -75,6 +75,21 @@
         </aside>
       </div>
     </div>
-    <script type="module" src="./main.mjs?v=10"></script>
+    <dialog id="recipe-panel" class="recipe-panel" aria-labelledby="recipe-panel-title">
+      <div class="recipe-head">
+        <div>
+          <h2 id="recipe-panel-title">配方</h2>
+          <p id="recipe-file-label"></p>
+        </div>
+        <button id="recipe-close" type="button">关闭</button>
+      </div>
+      <textarea id="recipe-json" spellcheck="false"></textarea>
+      <div class="recipe-foot">
+        <p id="recipe-note" role="status"></p>
+        <button id="recipe-copy" type="button">复制</button>
+        <button id="recipe-download" type="button">下载</button>
+      </div>
+    </dialog>
+    <script type="module" src="./main.mjs?v=12"></script>
   </body>
 </html>

@@ -4,10 +4,11 @@ export { AsciiPlayer, measureCharAspect } from './player.mjs'
 export {
   agentPrompt,
   buildRecipe,
+  hasBakedFrames,
   hydrateRecipe,
   parseRecipe,
   recipeClip,
   recipeFileName,
   retuneRecipe,
 } from './recipe.mjs'
-export { mountAsciiRecipe } from './mount.mjs'
+export { mountAsciiGif, mountAsciiRecipe } from './mount.mjs'

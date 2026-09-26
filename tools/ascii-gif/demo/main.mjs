@@ -2,6 +2,7 @@ import { AsciiPlayer, decodeAsciiClip, frameAt, loadAsciiClip, measureCharAspect
 import {
   agentPrompt,
   buildRecipe,
+  hasBakedFrames,
   hydrateRecipe,
   parseRecipe,
   recipeClip,
@@ -25,6 +26,10 @@ const fonts = {
 }
 const pauseButton = document.querySelector('#pause')
 const status = document.querySelector('#status')
+const recipePanel = document.querySelector('#recipe-panel')
+const recipeJson = document.querySelector('#recipe-json')
+const recipeFileLabel = document.querySelector('#recipe-file-label')
+const recipeNote = document.querySelector('#recipe-note')
 const grayCtx = gray.getContext('2d')
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
 
@@ -44,6 +49,8 @@ let last = performance.now()
 let paused = reduced.matches
 let scrubbing = false
 let noteTimer = 0
+let editorTimer = 0
+let panelFileName = 'ascii.json'
 
 function flashStatus(message) {
   statusNote = message
@@ -83,6 +90,83 @@ function snapshotRecipe() {
   if (clip) return buildRecipe({ clip, look: currentLook(), sourceName })
   if (recipe) return retuneRecipe(recipe, playTimeLook())
   throw new Error('没有可导出的画面。')
+}
+
+function prettyRecipe(data) {
+  return JSON.stringify(data, null, 2)
+}
+
+function currentPanelName() {
+  return recipeFileName(sourceName || 'ascii')
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text)
+  } catch {
+    const area = document.createElement('textarea')
+    area.value = text
+    area.setAttribute('readonly', '')
+    area.style.position = 'fixed'
+    area.style.left = '-9999px'
+    document.body.appendChild(area)
+    area.select()
+    document.execCommand('copy')
+    area.remove()
+  }
+}
+
+function flashPanelNote(message) {
+  recipeNote.textContent = message
+}
+
+function applyEditorLook(next) {
+  applyLook(next.look)
+  if (!player) return
+  player.color = next.look.color
+  player.gain = next.look.gain ?? 1
+  if (clip) player.setColumns(next.look.columns)
+}
+
+function readEditorRecipe() {
+  const text = recipeJson.value
+  const parsed = JSON.parse(text)
+  return parseRecipe(parsed)
+}
+
+function applyEditorText() {
+  try {
+    const next = readEditorRecipe()
+    recipe = next
+    applyEditorLook(next)
+    if (!clip && player && hasBakedFrames(next)) {
+      const hydrated = hydrateRecipe(next)
+      player.clipData = recipeClip(hydrated)
+      player.setBaked(hydrated)
+    }
+    flashPanelNote('')
+    return next
+  } catch (error) {
+    flashPanelNote(error.message)
+    return null
+  }
+}
+
+function closeRecipePanel() {
+  if (typeof recipePanel.close === 'function' && recipePanel.open) recipePanel.close()
+  else recipePanel.removeAttribute('open')
+}
+
+function openRecipePanel() {
+  const next = snapshotRecipe()
+  panelFileName = currentPanelName()
+  recipeFileLabel.textContent = panelFileName
+  recipeJson.value = prettyRecipe(next)
+  flashPanelNote('')
+  if (typeof recipePanel.showModal === 'function') recipePanel.showModal()
+  else recipePanel.setAttribute('open', '')
+  recipeJson.focus()
+  recipeJson.setSelectionRange(0, 0)
 }
 
 async function applyFont() {
@@ -173,34 +257,22 @@ function exportPng() {
   }, 'image/png')
 }
 
-function exportRecipeFile() {
-  const next = snapshotRecipe()
+function exportRecipeFile(data) {
+  const next = data || snapshotRecipe()
   const name = recipeFileName(sourceName || next.source?.name)
-  downloadBlob(name, new Blob([JSON.stringify(next)], { type: 'application/json' }))
+  downloadBlob(name, new Blob([prettyRecipe(next)], { type: 'application/json' }))
   return { next, name }
 }
 
 async function copyAgentPrompt() {
-  const { next, name } = exportRecipeFile()
-  const text = agentPrompt(next, name)
-  try {
-    await navigator.clipboard.writeText(text)
-  } catch {
-    const area = document.createElement('textarea')
-    area.value = text
-    area.setAttribute('readonly', '')
-    area.style.position = 'fixed'
-    area.style.left = '-9999px'
-    document.body.appendChild(area)
-    area.select()
-    document.execCommand('copy')
-    area.remove()
-  }
+  const edited = recipePanel.open ? applyEditorText() : null
+  const { next, name } = exportRecipeFile(edited || undefined)
+  await copyText(agentPrompt(next, name))
   return name
 }
 
 function timeForFrame(index) {
-  const frames = clip?.frames || recipe?.clip.frames || []
+  const frames = clip?.frames || recipe?.clip?.frames || []
   let time = 0
   for (let i = 0; i < index; i++) time += frames[i].delay
   return time
@@ -208,7 +280,7 @@ function timeForFrame(index) {
 
 function activeClip() {
   if (clip) return clip
-  if (recipe) return recipeClip(recipe)
+  if (hasBakedFrames(recipe)) return recipeClip(recipe)
   return null
 }
 
@@ -227,7 +299,7 @@ function render() {
     status.textContent = statusNote
     return
   }
-  if (sourceKind === 'recipe') {
+  if (sourceKind === 'recipe' && hasBakedFrames(recipe)) {
     status.textContent = `配方 ${sourceName} · 帧 ${index + 1}/${source.frames.length} · 本帧 ${source.frames[index].delay} ms · 列 ${grid.columns} × 行 ${grid.rows} · 已烘焙`
     return
   }
@@ -265,24 +337,38 @@ function useClip(next, name) {
 
 async function useRecipe(next, name) {
   recipe = parseRecipe(next)
-  clip = null
-  sourceKind = 'recipe'
   sourceName = name || recipe.source?.name || 'recipe.json'
   statusNote = ''
   applyLook(recipe.look)
-  resetClock(recipe.clip.frames.length)
-  document.querySelector('.preview').style.aspectRatio = String(recipe.look.aspect || 1)
-  const hydrated = hydrateRecipe(recipe)
-  player = new AsciiPlayer(ascii, recipeClip(hydrated), {
-    font: currentFont(),
-    columns: recipe.look.columns,
-    charAspect: recipe.look.charAspect,
-    color: colorInput.value,
-    gain: recipe.look.gain,
-  })
-  player.setBaked(hydrated)
-  await applyFont()
-  render()
+  if (hasBakedFrames(recipe)) {
+    clip = null
+    sourceKind = 'recipe'
+    resetClock(recipe.clip.frames.length)
+    document.querySelector('.preview').style.aspectRatio = String(recipe.look.aspect || 1)
+    const hydrated = hydrateRecipe(recipe)
+    player = new AsciiPlayer(ascii, recipeClip(hydrated), {
+      font: currentFont(),
+      columns: recipe.look.columns,
+      charAspect: recipe.look.charAspect,
+      color: colorInput.value,
+      gain: recipe.look.gain,
+    })
+    player.setBaked(hydrated)
+    await applyFont()
+    render()
+    return
+  }
+  sourceKind = clip ? 'gif' : 'recipe'
+  if (clip && player) {
+    player.clearBaked()
+    player.setColumns(recipe.look.columns)
+    player.gain = recipe.look.gain ?? 1
+    await applyFont()
+    render()
+    return
+  }
+  statusNote = '配方已加载。导入原 GIF 后按此设定播放。'
+  status.textContent = statusNote
 }
 
 function tick(now) {
@@ -323,12 +409,33 @@ document.querySelector('#choose-recipe').addEventListener('click', () => recipeF
 document.querySelector('#export-png').addEventListener('click', exportPng)
 document.querySelector('#export-recipe').addEventListener('click', () => {
   try {
-    const { name } = exportRecipeFile()
-    flashStatus(`已导出 ${name}`)
+    openRecipePanel()
   } catch (error) {
     statusNote = error.message
     status.textContent = statusNote
   }
+})
+document.querySelector('#recipe-close').addEventListener('click', () => closeRecipePanel())
+recipePanel.addEventListener('click', (event) => {
+  if (event.target === recipePanel) closeRecipePanel()
+})
+recipeJson.addEventListener('input', () => {
+  window.clearTimeout(editorTimer)
+  editorTimer = window.setTimeout(applyEditorText, 400)
+})
+document.querySelector('#recipe-copy').addEventListener('click', async () => {
+  try {
+    const next = applyEditorText()
+    await copyText(recipeJson.value)
+    flashPanelNote(next ? `已复制 ${panelFileName}` : '已复制文本')
+  } catch (error) {
+    flashPanelNote(error.message)
+  }
+})
+document.querySelector('#recipe-download').addEventListener('click', () => {
+  downloadBlob(panelFileName, new Blob([recipeJson.value], { type: 'application/json;charset=utf-8' }))
+  const next = applyEditorText()
+  flashPanelNote(next ? `已下载 ${panelFileName}` : `已下载，${recipeNote.textContent}`)
 })
 document.querySelector('#copy-agent').addEventListener('click', async () => {
   try {

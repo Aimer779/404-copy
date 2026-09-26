@@ -20,13 +20,16 @@
     <div id="ascii-slot"></div>
     <p id="status" role="status">需要 ?recipe=配方.json</p>
     <script type="module">
-      import { mountAsciiRecipe } from '../src/mount.mjs'
+      import { hasBakedFrames } from '../src/recipe.mjs'
+      import { mountAsciiGif, mountAsciiRecipe } from '../src/mount.mjs'
 
       const status = document.querySelector('#status')
       const slot = document.querySelector('#ascii-slot')
-      const url = new URLSearchParams(location.search).get('recipe')
+      const params = new URLSearchParams(location.search)
+      const url = params.get('recipe')
+      const gif = params.get('gif')
       if (!url) {
-        status.textContent = '打开 embed.html?recipe=./your-ascii.json'
+        status.textContent = '打开 embed.html?recipe=./your-ascii.json&gif=../fixtures/bust.gif'
       } else {
         try {
           const recipe = await fetch(url).then((response) => {
@@ -34,7 +37,12 @@
             return response.json()
           })
           slot.style.setProperty('--aspect', String(recipe.look.aspect || 1))
-          mountAsciiRecipe(slot, recipe)
+          if (hasBakedFrames(recipe)) mountAsciiRecipe(slot, recipe)
+          else {
+            const gifUrl = gif || recipe.source?.name
+            if (!gifUrl) throw new Error('这份配方需要原 GIF，加上 ?gif=')
+            await mountAsciiGif(slot, gifUrl, recipe)
+          }
           status.textContent = `${recipe.source?.name || url} · ${recipe.look.columns}×${recipe.look.rows}`
         } catch (error) {
           status.textContent = error.message
