@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=13" />
+    <link rel="stylesheet" href="./styles.css?v=14" />
   </head>
   <body>
     <div class="shell">
       <header class="topbar">
-        <div class="brand">ASCII GIF</div>
-        <p id="status" role="status"></p>
+        <div class="brand-block">
+          <div class="brand">ASCII GIF</div>
+          <p id="status" role="status"></p>
+        </div>
         <div class="top-actions">
-          <button id="choose-gif" type="button">导入 GIF</button>
+          <button id="choose-gif" class="ghost" type="button">导入 GIF</button>
           <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
-          <button id="choose-recipe" type="button">导入配方</button>
+          <button id="choose-recipe" class="ghost" type="button">导入配方</button>
           <input id="recipe-file" type="file" accept=".json,application/json" hidden />
-          <button id="export-recipe" type="button">导出配方</button>
-          <button id="copy-agent" type="button">复制给 Agent</button>
-          <button id="export-png" type="button">导出 PNG</button>
+          <button id="copy-agent" class="ghost" type="button">复制给 Agent</button>
+          <button id="export-recipe" class="primary" type="button">导出配方</button>
+          <button id="export-png" class="ghost" type="button">导出 PNG</button>
         </div>
       </header>
       <div class="workspace">
@@ -27,17 +29,21 @@
           <div id="stage" class="stage relative clip">
             <canvas id="ascii" class="absolute inset no-pointer"></canvas>
           </div>
+          <div class="transport">
+            <button id="pause" type="button" aria-label="暂停">
+              <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+                <rect x="3.5" y="2.5" width="3" height="11" />
+                <rect x="9.5" y="2.5" width="3" height="11" />
+              </svg>
+              <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4.5 2.5v11L13.5 8Z" />
+              </svg>
+            </button>
+            <input id="frame" type="range" min="0" max="0" value="0" />
+            <span id="frame-value">1/1</span>
+          </div>
         </div>
         <aside class="inspector">
-          <section class="group">
-            <h2>/ SOURCE</h2>
-            <div class="field">
-              <div class="field-label"><span>帧</span><span id="frame-value">1</span></div>
-              <input id="frame" type="range" min="0" max="0" value="0" />
-            </div>
-            <button id="pause" type="button">暂停</button>
-            <p class="sources"><a href="./">章鱼哥</a> · <a href="?gif=../fixtures/bust.gif">半身像</a> · <a href="?gif=../fixtures/disposal.gif">处置测试</a></p>
-          </section>
           <section class="group">
             <h2>/ CHARACTERS</h2>
             <div class="field">
@@ -54,23 +60,27 @@
                 <option value="vt323">VT323</option>
               </select>
             </label>
-            <label class="field">
+            <div class="field">
               <span class="field-label">颜色</span>
-              <input id="color" type="color" value="#000013" />
-            </label>
+              <label class="color-row">
+                <input id="color" type="color" value="#f3f3f3" />
+                <span id="color-hex">#F3F3F3</span>
+              </label>
+            </div>
           </section>
           <section class="group">
             <h2>/ BACKDROP</h2>
             <div class="mass-toggle">
-              <button id="light-mass" class="is-on" type="button">白块</button>
-              <button id="dark-mass" type="button">黑块</button>
+              <button id="light-mass" type="button">白块</button>
+              <button id="dark-mass" class="is-on" type="button">黑块</button>
             </div>
           </section>
           <section class="group">
-            <h2>/ GRAY</h2>
+            <h2>/ SOURCE</h2>
             <div class="preview relative clip">
               <canvas id="gray" class="absolute inset no-pointer"></canvas>
             </div>
+            <p class="sources"><a href="./">章鱼哥</a> · <a href="?gif=../fixtures/bust.gif">半身像</a> · <a href="?gif=../fixtures/disposal.gif">处置测试</a></p>
           </section>
         </aside>
       </div>
@@ -81,15 +91,15 @@
           <h2 id="recipe-panel-title">配方</h2>
           <p id="recipe-file-label"></p>
         </div>
-        <button id="recipe-close" type="button">关闭</button>
+        <button id="recipe-close" class="ghost" type="button">关闭</button>
       </div>
       <textarea id="recipe-json" spellcheck="false"></textarea>
       <div class="recipe-foot">
         <p id="recipe-note" role="status"></p>
-        <button id="recipe-copy" type="button">复制</button>
-        <button id="recipe-download" type="button">下载</button>
+        <button id="recipe-download" class="ghost" type="button">下载</button>
+        <button id="recipe-copy" class="primary" type="button">复制</button>
       </div>
     </dialog>
-    <script type="module" src="./main.mjs?v=13"></script>
+    <script type="module" src="./main.mjs?v=14"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@
 python -m http.server 4174 --bind 127.0.0.1
 ```
 
-打开 `http://127.0.0.1:4174/tools/ascii-gif/demo/`。默认展示 404 页同一份章鱼哥 GIF（`assets/squidward.gif`）。演示台导出的配方 JSON 只含字体、墨色、列数等设定；用户把这份 JSON 和原 GIF 一起交给自己的 Agent，用 ascii-gif 在站点里解码播放。PNG 仍是当前帧备份。
+打开 `http://127.0.0.1:4174/tools/ascii-gif/demo/`。默认展示 404 页同一份章鱼哥 GIF（`assets/squidward.gif`），舞台默认黑底浅字，播放条在画面下方。演示台导出的配方 JSON 只含字体、墨色、列数等设定；用户把这份 JSON 和原 GIF 一起交给自己的 Agent，用 ascii-gif 在站点里解码播放。PNG 仍是当前帧备份。
 
 ## 本轮实现（2026-09-25）
 

@@ -26,6 +26,7 @@ const fonts = {
 }
 const pauseButton = document.querySelector('#pause')
 const status = document.querySelector('#status')
+const colorHex = document.querySelector('#color-hex')
 const recipePanel = document.querySelector('#recipe-panel')
 const recipeJson = document.querySelector('#recipe-json')
 const recipeFileLabel = document.querySelector('#recipe-file-label')
@@ -37,7 +38,7 @@ const themes = {
   light: { mass: '#f3f3f3', ink: '#000013' },
   dark: { mass: '#000013', ink: '#f3f3f3' },
 }
-let theme = themes.light
+let theme = themes.dark
 let clip = null
 let recipe = null
 let player = null
@@ -59,6 +60,16 @@ function flashStatus(message) {
   noteTimer = window.setTimeout(() => {
     if (statusNote === message) statusNote = ''
   }, 2400)
+}
+
+function setPaused(next) {
+  paused = next
+  pauseButton.classList.toggle('is-paused', paused)
+  pauseButton.setAttribute('aria-label', paused ? '继续' : '暂停')
+}
+
+function syncColorHex() {
+  colorHex.textContent = colorInput.value.toUpperCase()
 }
 
 function currentFont() {
@@ -180,6 +191,7 @@ function applyTheme(next) {
   theme = next
   stage.style.background = theme.mass
   colorInput.value = theme.ink
+  syncColorHex()
   document.querySelector('#light-mass').classList.toggle('is-on', next === themes.light)
   document.querySelector('#dark-mass').classList.toggle('is-on', next === themes.dark)
 }
@@ -188,7 +200,10 @@ function applyLook(look) {
   if (look.massId === 'dark' || look.mass === themes.dark.mass) applyTheme(themes.dark)
   else applyTheme(themes.light)
   if (look.mass) stage.style.background = look.mass
-  if (look.color) colorInput.value = look.color
+  if (look.color) {
+    colorInput.value = look.color
+    syncColorHex()
+  }
   if (look.fontId && fonts[look.fontId]) fontSelect.value = look.fontId
   if (look.columns) columnsInput.value = String(look.columns)
 }
@@ -294,27 +309,19 @@ function render() {
   const grid = player.grid()
   if (!scrubbing && frameInput.value !== String(index)) frameInput.value = String(index)
   document.querySelector('#columns-value').textContent = String(grid.columns)
-  document.querySelector('#frame-value').textContent = `${index + 1}/${source.frames.length}`
+  document.querySelector('#frame-value').textContent = `${index + 1} / ${source.frames.length}`
   if (statusNote) {
     status.textContent = statusNote
     return
   }
-  if (sourceKind === 'recipe' && hasBakedFrames(recipe)) {
-    status.textContent = `配方 ${sourceName} · 帧 ${index + 1}/${source.frames.length} · 本帧 ${source.frames[index].delay} ms · 列 ${grid.columns} × 行 ${grid.rows} · 已烘焙`
-    return
-  }
-  const frame = clip.frames[index]
-  const partial = clip.frames.filter(item => item.dims.width < clip.width || item.dims.height < clip.height).length
-  const stored = clip.bytes < 1024 ? `${clip.bytes} B` : `${Math.round(clip.bytes / 1024)} KB`
-  status.textContent = `${sourceName} · 帧 ${index + 1}/${clip.frames.length} · 本帧 ${frame.delay} ms · 列 ${grid.columns} × 行 ${grid.rows} · 灰度 ${stored} · 素材 ${clip.width}×${clip.height} · 局部帧 ${partial}`
+  status.textContent = `${sourceName} · ${source.frames.length}帧 · ${grid.columns}×${grid.rows}`
 }
 
 function resetClock(frameCount) {
   gifTime = 0
   frameInput.max = String(Math.max(0, frameCount - 1))
   frameInput.value = '0'
-  paused = reduced.matches
-  pauseButton.textContent = paused ? '继续' : '暂停'
+  setPaused(reduced.matches)
 }
 
 function useClip(next, name) {
@@ -394,14 +401,13 @@ fontSelect.addEventListener('change', () => { applyFont() })
 frameInput.addEventListener('pointerdown', () => { scrubbing = true })
 frameInput.addEventListener('pointerup', () => { scrubbing = false })
 frameInput.addEventListener('input', () => {
-  paused = true
-  pauseButton.textContent = '继续'
+  setPaused(true)
   gifTime = timeForFrame(Number(frameInput.value))
 })
 pauseButton.addEventListener('click', () => {
-  paused = !paused
-  pauseButton.textContent = paused ? '继续' : '暂停'
+  setPaused(!paused)
 })
+colorInput.addEventListener('input', syncColorHex)
 const gifFile = document.querySelector('#gif-file')
 const recipeFile = document.querySelector('#recipe-file')
 document.querySelector('#choose-gif').addEventListener('click', () => gifFile.click())
@@ -478,7 +484,7 @@ recipeFile.addEventListener('change', async () => {
 document.querySelector('#light-mass').addEventListener('click', () => applyTheme(themes.light))
 document.querySelector('#dark-mass').addEventListener('click', () => applyTheme(themes.dark))
 if (window.matchMedia('(max-width: 640px)').matches) columnsInput.value = '60'
-if (paused) pauseButton.textContent = '继续'
+setPaused(paused)
 applyTheme(theme)
 
 const params = new URLSearchParams(location.search)
