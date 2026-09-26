@@ -223,6 +223,47 @@ function applyLook(look) {
   if (look.columns) columnsInput.value = String(look.columns)
 }
 
+function pick(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
+function randomRecipeLook() {
+  const dark = Math.random() < 0.5
+  const inks = dark
+    ? ['#f3f3f3', '#ffe8a3', '#9ae6b4', '#90cdf4', '#fbd38d', '#feb2b2', '#e9d5ff']
+    : ['#000013', '#171717', '#3d1f00', '#0b3d2e', '#1e1b4b', '#4a0e0e', '#14213d']
+  return {
+    columns: pick([56, 72, 88, 104, 110, 128, 144]),
+    fontId: pick(Object.keys(fonts)),
+    glyphs: pick([...glyphsSelect.options].map((option) => option.value)),
+    massId: dark ? 'dark' : 'light',
+    mass: dark ? themes.dark.mass : themes.light.mass,
+    color: pick(inks),
+  }
+}
+
+async function applyRandomRecipe() {
+  if (!player) {
+    flashStatus('Import a GIF first.')
+    return
+  }
+  let look = randomRecipeLook()
+  for (let i = 0; i < 8; i++) {
+    const same = look.glyphs === glyphsSelect.value
+      && look.columns === Number(columnsInput.value)
+      && look.color === colorInput.value
+      && look.fontId === fontSelect.value
+    if (!same) break
+    look = randomRecipeLook()
+  }
+  applyLook(look)
+  await applyFont()
+  if (clip) player.setColumns(look.columns)
+  ascii.dataset.glyphs = look.glyphs
+  render()
+  flashStatus('Random recipe')
+}
+
 function drawGray(frame) {
   const box = clip.content ?? { x: 0, y: 0, width: clip.pixelColumns, height: clip.pixelRows }
   if (gray.width !== box.width || gray.height !== box.height) {
@@ -447,6 +488,9 @@ const gifFile = document.querySelector('#gif-file')
 const recipeFile = document.querySelector('#recipe-file')
 document.querySelector('#choose-gif').addEventListener('click', () => gifFile.click())
 document.querySelector('#choose-recipe').addEventListener('click', () => recipeFile.click())
+document.querySelector('#random-recipe').addEventListener('click', () => {
+  applyRandomRecipe()
+})
 document.querySelector('#export-png').addEventListener('click', exportPng)
 document.querySelector('#export-recipe').addEventListener('click', () => {
   try {

@@ -121,7 +121,7 @@ button.primary:hover { background: #e5e5e5; }
   display: flex;
   align-items: center;
   gap: 6px;
-  width: min(560px, calc(100% - 40px));
+  width: min(600px, calc(100% - 40px));
   padding: 8px 10px;
   transform: translateX(-50%);
   background: #141414d9;

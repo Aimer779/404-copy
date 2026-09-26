@@ -35,6 +35,7 @@ Open `http://127.0.0.1:4174/tools/ascii-gif/demo/`.
 - **Copy for Agent** downloads the same recipe and copies install instructions. Send the original GIF with it.
 - **Import recipe** restores the look knobs. Playback still needs the original GIF.
 - **Export PNG** saves the current glyph frame, including the stage background.
+- **Random recipe** (sparkles on the transport bar) rolls columns, font, glyphs, ink, and paper on the current GIF. Export recipe to keep that look.
 
 **Font** picks a monospace face. Consolas is the default. VT323 is the pixel face.
 

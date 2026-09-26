@@ -28,19 +28,22 @@
    - **Columns**：列数，决定疏密  
    - **Font**：Consolas、Cascadia Mono、Courier New、Lucida Console、VT323  
    - **Glyphs**：`01`、`@%#*` 字形、`█▓▒░` 字块、混合、点字 `⣿`、`OX`  
-   - **Color / Light / Dark**：墨色和底色  
+   - **Color / Light / Dark**：墨色和底色
 
-4. **导出 recipe**  
+4. **Random recipe**  
+   悬浮条上的火花按钮。一点就随机一套列数、字体、字符集和配色，当前 GIF 立刻换装。再导出 recipe，拿走的就是这一套灵感。
+
+5. **导出 recipe**  
    打开可编辑的 JSON：列数、字体、颜色、字符集、来源信息。**不含像素网格。** 动画内容仍是那份 GIF。  
    面板里可以改、复制、下载 `{name}-ascii.json`。
 
-5. **Copy for Agent**  
+6. **Copy for Agent**  
    下载同一份 JSON，并把安装说明复制到剪贴板。发给 Agent 时带上原 GIF。
 
-6. **导入 recipe**  
+7. **导入 recipe**  
    把以前导出的 JSON 读回来，旋钮复原。要再播，还需要原 GIF。
 
-7. **导出 PNG**  
+8. **导出 PNG**  
    只保存当前这一帧，带舞台背景，当静帧备份。
 
 ### 嵌进自己的网页
