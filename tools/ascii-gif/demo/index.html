@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=7" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
   </head>
   <body>
     <div class="shell">
@@ -15,6 +15,10 @@
         <div class="top-actions">
           <button id="choose-gif" type="button">导入 GIF</button>
           <input id="gif-file" type="file" accept=".gif,image/gif" hidden />
+          <button id="choose-recipe" type="button">导入配方</button>
+          <input id="recipe-file" type="file" accept=".json,application/json" hidden />
+          <button id="export-recipe" type="button">导出配方</button>
+          <button id="copy-agent" type="button">复制给 Agent</button>
           <button id="export-png" type="button">导出 PNG</button>
         </div>
       </header>
@@ -71,6 +75,6 @@
         </aside>
       </div>
     </div>
-    <script type="module" src="./main.mjs?v=7"></script>
+    <script type="module" src="./main.mjs?v=10"></script>
   </body>
 </html>

@@ -18,11 +18,34 @@ GIF → `parseGIF` / `decompressFrame`（打开 patch）→ 按 `disposalType` �
 python -m http.server 4174 --bind 127.0.0.1
 ```
 
-打开 `http://127.0.0.1:4174/tools/ascii-gif/demo/`。顶栏右侧的「导入 GIF」读取本机文件，在浏览器里合成并转成字符，文件不会发到别处。「导出 PNG」保存当前这一帧字符画面，背景色和画面上看到的一致。「字体」切换字符用的等宽字体，默认是 Consolas。VT323 是原来的像素等宽字。
+打开 `http://127.0.0.1:4174/tools/ascii-gif/demo/`。顶栏：
 
-默认人物是 `fixtures/bust.gif`。`?gif=` 仍然可以指定一个地址，`?gif=../fixtures/disposal.gif` 用来看局部帧和帧处置。
+- 「导入 GIF」读取本机文件，在浏览器里合成并转成字符，文件不会发到别处。
+- 「导出配方」下载当前列数、字体、墨色、底色和已经烘焙的字符网格，文件名是 `{来源}-ascii.json`。
+- 「复制给 Agent」下载同一份配方，并把安装说明复制到剪贴板。
+- 「导入配方」把 JSON 读回演示台，画面和旋钮与导出时一致。列数已经烤进配方；要改取样需要再导入原 GIF。
+- 「导出 PNG」保存当前这一帧字符画面，背景色和画面上看到的一致。
 
-## 调用
+「字体」切换字符用的等宽字体，默认是 Consolas。VT323 是原来的像素等宽字。
+
+默认人物是 `fixtures/bust.gif`。`?gif=` 仍然可以指定一个地址，`?gif=../fixtures/disposal.gif` 用来看局部帧和帧处置。`?recipe=` 可以直接打开一份配方。挂载示例：`demo/embed.html?recipe=./your-ascii.json`。
+
+## 接到站点
+
+配方是给用户自己的 Agent 或页面用的交付物。播放配方不需要原 GIF，也不需要 `vendor/gifuct.mjs`。
+
+```js
+import { mountAsciiRecipe } from './src/mount.mjs'
+
+const recipe = await fetch('./bust-ascii.json').then((r) => r.json())
+mountAsciiRecipe(document.querySelector('#ascii-slot'), recipe)
+```
+
+把 `grid.mjs`、`player.mjs`、`recipe.mjs`、`mount.mjs` 和配方 JSON 放到站点里。容器需要明确的宽高或 `aspect-ratio`；配方里的 `look.aspect` 是预览时的比例。`look.color` 和 `look.mass` 可以改成站点里的实色值。不要改 `clip.frames`。
+
+## 运行时解码 GIF
+
+主 404 页仍然直接读 GIF：
 
 ```js
 import { loadAsciiClip, AsciiPlayer } from './src/index.mjs'
@@ -70,10 +93,8 @@ pnpm test
 python test/make_fixtures.py
 ```
 
-`pnpm test` 核对透明像素不擦画面、disposal 2/3、局部帧尺寸、原 delay，以及人物头部在取样后仍然是墨。
+`pnpm test` 核对透明像素不擦画面、disposal 2/3、局部帧尺寸、原 delay、人物头部在取样后仍然是墨，以及配方 JSON 往返。
 
 ## 接到 404 页面
 
-主页面目前不引用这个模块。`tests/verify.py` 仍要求文档里没有 `canvas`，参考角色的 GIF 也还没放进 `assets/`。
-
-接入时在 `.data-mass` 中加一层 Canvas，放在色块之上、故障线之下。颜色用当前 `--ink`。人物换帧走 GIF 的 `delay`，轮廓和故障继续走原来的 16 秒时钟。
+主页面动态导入 `src/index.mjs`，用 `assets/squidward.gif` 在 `.data-mass` 里播放。颜色用当前 `--ink`。人物换帧走 GIF 的 `delay`，轮廓和故障继续走原来的 16 秒时钟。站点接入新动画时优先走配方和 `mountAsciiRecipe`。

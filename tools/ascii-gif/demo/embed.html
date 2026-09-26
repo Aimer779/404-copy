@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCII GIF embed</title>
+    <link rel="icon" href="data:," />
+    <style>
+      html, body { height: 100%; margin: 0; background: #111; color: #ddd; font: 14px/1.4 sans-serif; }
+      #ascii-slot {
+        width: min(92vw, 720px);
+        margin: 8vh auto 0;
+        aspect-ratio: var(--aspect, 1);
+        background: #f3f3f3;
+      }
+      p { text-align: center; color: #8d8d8d; }
+    </style>
+  </head>
+  <body>
+    <div id="ascii-slot"></div>
+    <p id="status" role="status">需要 ?recipe=配方.json</p>
+    <script type="module">
+      import { mountAsciiRecipe } from '../src/mount.mjs'
+
+      const status = document.querySelector('#status')
+      const slot = document.querySelector('#ascii-slot')
+      const url = new URLSearchParams(location.search).get('recipe')
+      if (!url) {
+        status.textContent = '打开 embed.html?recipe=./your-ascii.json'
+      } else {
+        try {
+          const recipe = await fetch(url).then((response) => {
+            if (!response.ok) throw new Error(`读取失败：${response.status}`)
+            return response.json()
+          })
+          slot.style.setProperty('--aspect', String(recipe.look.aspect || 1))
+          mountAsciiRecipe(slot, recipe)
+          status.textContent = `${recipe.source?.name || url} · ${recipe.look.columns}×${recipe.look.rows}`
+        } catch (error) {
+          status.textContent = error.message
+        }
+      }
+    </script>
+  </body>
+</html>

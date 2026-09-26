@@ -23,6 +23,7 @@ export class AsciiPlayer {
     this.gain = options.gain ?? 1
     this.viewport = options.viewport || null
     this.bands = null
+    this.baked = null
     this.time = 0
     this.cacheKey = ''
     this.cache = null
@@ -30,6 +31,7 @@ export class AsciiPlayer {
   }
 
   setColumns(columns) {
+    if (this.baked) return
     this.columns = clampColumns(columns)
   }
 
@@ -40,6 +42,26 @@ export class AsciiPlayer {
 
   setViewport(viewport) {
     this.viewport = viewport
+  }
+
+  setBaked(recipe) {
+    const look = recipe.look
+    this.baked = {
+      columns: look.columns,
+      rows: look.rows,
+      frames: recipe.clip.frames,
+    }
+    this.columns = look.columns
+    this.charAspect = look.charAspect
+    this.gain = look.gain ?? this.gain
+    this.cacheKey = ''
+    this.cache = null
+  }
+
+  clearBaked() {
+    this.baked = null
+    this.cacheKey = ''
+    this.cache = null
   }
 
   // time selects the GIF frame. bands use the host's own coordinates and shifts.
@@ -58,6 +80,14 @@ export class AsciiPlayer {
   }
 
   cells(index) {
+    if (this.baked) {
+      const frame = this.baked.frames[index]
+      return {
+        columns: this.baked.columns,
+        rows: this.baked.rows,
+        coverage: frame.coverage,
+      }
+    }
     const key = `${index}:${this.columns}:${this.charAspect}:${this.ink}:${this.floor}`
     if (key !== this.cacheKey) {
       this.cache = coverageGrid(this.clipData, index, {
