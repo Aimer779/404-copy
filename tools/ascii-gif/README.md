@@ -28,7 +28,7 @@ python -m http.server 4174 --bind 127.0.0.1
 
 「字体」切换字符用的等宽字体，默认是 Consolas。VT323 是原来的像素等宽字。
 
-默认人物是 `fixtures/bust.gif`。`?gif=` 仍然可以指定一个地址，`?gif=../fixtures/disposal.gif` 用来看局部帧和帧处置。`?recipe=` 读回配方旋钮。挂载示例：`demo/embed.html?recipe=./your-ascii.json&gif=../fixtures/bust.gif`。
+默认人物是 404 页同一份 `assets/squidward.gif`。`?gif=` 仍然可以指定一个地址，`?gif=../fixtures/bust.gif` 看半身像夹具，`?gif=../fixtures/disposal.gif` 看局部帧和帧处置。`?recipe=` 读回配方旋钮。挂载示例：`demo/embed.html?recipe=./your-ascii.json&gif=../../../assets/squidward.gif`。
 
 ## 接到站点
 

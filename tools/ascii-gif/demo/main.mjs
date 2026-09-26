@@ -483,7 +483,8 @@ applyTheme(theme)
 
 const params = new URLSearchParams(location.search)
 const recipeUrl = params.get('recipe')
-const gifUrl = params.get('gif') || new URL('../fixtures/bust.gif', import.meta.url).href
+const defaultGif = new URL('../../../assets/squidward.gif', import.meta.url).href
+const gifUrl = params.get('gif') || defaultGif
 try {
   await document.fonts.load('20px VT323')
   if (recipeUrl) {
@@ -492,7 +493,7 @@ try {
     await useRecipe(await response.text(), recipeUrl.split('/').pop())
   } else {
     const initial = await loadAsciiClip(gifUrl)
-    const initialName = params.get('gif') ? params.get('gif').split('/').pop() : 'bust.gif'
+    const initialName = params.get('gif') ? params.get('gif').split('/').pop() : 'squidward.gif'
     useClip(initial, initialName)
   }
 } catch (error) {

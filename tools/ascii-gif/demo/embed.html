@@ -29,7 +29,7 @@
       const url = params.get('recipe')
       const gif = params.get('gif')
       if (!url) {
-        status.textContent = '打开 embed.html?recipe=./your-ascii.json&gif=../fixtures/bust.gif'
+        status.textContent = '打开 embed.html?recipe=./your-ascii.json&gif=../../../assets/squidward.gif'
       } else {
         try {
           const recipe = await fetch(url).then((response) => {
