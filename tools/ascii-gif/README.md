@@ -1,5 +1,7 @@
 # ASCII GIF
 
+The whole 404-copy project, including this tool, is inspired by the Bilibili video *[再花里胡哨一点？在网页里使用ASCII动画](https://www.bilibili.com/video/BV1H6eyzYE3V)* (BV1H6eyzYE3V).
+
 Turn a GIF into a reusable character animation. The module decodes frames, composites disposal, samples grayscale, and draws to canvas. The host page supplies the clock and color.
 
 Nothing is fetched from a CDN at runtime. `gifuct-js` ships as CommonJS; the browser build lives in `vendor/gifuct.mjs`.

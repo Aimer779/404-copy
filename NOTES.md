@@ -1,5 +1,11 @@
 # 404-copy 实验说明
 
+## 灵感来源
+
+**整个项目的灵感都来自 B 站视频《[再花里胡哨一点？在网页里使用ASCII动画](https://www.bilibili.com/video/BV1H6eyzYE3V)》（BV1H6eyzYE3V）。**
+
+404 故障页、主体轮廓里的字符动画，以及 `tools/ascii-gif/` 这套把 GIF 转成可嵌入 ASCII 动画的工具，都是从这条视频出发的学习实验。实现是本地拟合，不是原片站点的源码复刻。
+
 ## ASCII 工具（2026-09-25）
 
 字符动画做在 `tools/ascii-gif/`。主页面用 `assets/squidward.gif` 在主体轮廓内播放，颜色跟随 `--ink`，换帧走 GIF 自己的时长。公开演示：https://aimer779.github.io/404-copy/tools/ascii-gif/demo/ 。用法见该目录的 `README.md`。预览：
