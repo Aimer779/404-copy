@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII GIF</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=15" />
+    <link rel="stylesheet" href="./styles.css?v=17" />
   </head>
   <body>
     <div class="shell">
@@ -92,6 +92,17 @@
                 <option value="vt323">VT323</option>
               </select>
             </label>
+            <label class="field">
+              <span class="field-label">字符</span>
+              <select id="glyphs">
+                <option value="binary" selected>01</option>
+                <option value="ascii">@%#* 字形</option>
+                <option value="block">█▓▒░ 字块</option>
+                <option value="mixed">@▓#* 混合</option>
+                <option value="braille">⣿ 点字</option>
+                <option value="ox">OX</option>
+              </select>
+            </label>
             <div class="field">
               <span class="field-label">颜色</span>
               <label class="color-row">
@@ -132,6 +143,6 @@
         <button id="recipe-copy" class="primary" type="button">复制</button>
       </div>
     </dialog>
-    <script type="module" src="./main.mjs?v=15"></script>
+    <script type="module" src="./main.mjs?v=17"></script>
   </body>
 </html>

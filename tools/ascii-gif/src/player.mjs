@@ -1,10 +1,11 @@
+import { glyphChars, glyphSet, rampIndex } from './glyphs.mjs'
 import { coverageGrid, frameAt, glyphBit } from './grid.mjs'
 
-export function measureCharAspect(font) {
+export function measureCharAspect(font, sample = '0') {
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
   ctx.font = `100px ${font}`
-  const width = ctx.measureText('0').width
+  const width = ctx.measureText(sample).width
   return width > 0 ? width / 100 : 0.5
 }
 
@@ -15,8 +16,9 @@ export class AsciiPlayer {
     this.ctx = canvas.getContext('2d', { alpha: true })
     this.clipData = clip
     this.font = options.font || 'ui-monospace, monospace'
+    this.glyphSet = glyphSet(options.glyphs)
     this.columns = clampColumns(options.columns ?? 110)
-    this.charAspect = options.charAspect || measureCharAspect(this.font)
+    this.charAspect = options.charAspect || measureCharAspect(this.font, glyphChars(this.glyphSet)[0])
     this.color = options.color || '#000013'
     this.ink = options.ink || 'auto'
     this.floor = options.floor ?? 18
@@ -37,7 +39,20 @@ export class AsciiPlayer {
 
   setFont(font, charAspect) {
     this.font = font
-    this.charAspect = charAspect || measureCharAspect(font)
+    this.charAspect = charAspect || measureCharAspect(font, glyphChars(this.glyphSet)[0])
+    this.atlasKey = ''
+  }
+
+  setGlyphs(id) {
+    this.glyphSet = glyphSet(id)
+    this.atlas = null
+    this.atlasKey = ''
+    this.cacheKey = ''
+    this.cache = null
+    if (!this.baked) {
+      this.charAspect = measureCharAspect(this.font, glyphChars(this.glyphSet)[0] || '0')
+    }
+    if (this.canvas.clientWidth > 1) this.draw()
   }
 
   setViewport(viewport) {
@@ -144,19 +159,21 @@ export class AsciiPlayer {
   }
 
   prepareAtlas(layout) {
-    const key = `${this.font}:${this.color}:${layout.cellW}x${layout.cellH}`
+    const chars = glyphChars(this.glyphSet)
+    const key = `${this.glyphSet.id}:${this.font}:${this.color}:${layout.cellW}x${layout.cellH}`
     if (key === this.atlasKey) return
     const atlas = document.createElement('canvas')
     atlas.width = layout.cellW
-    atlas.height = layout.cellH * 2
+    atlas.height = Math.max(1, layout.cellH * chars.length)
     const ctx = atlas.getContext('2d')
     ctx.clearRect(0, 0, atlas.width, atlas.height)
     ctx.fillStyle = this.color
     ctx.font = `${layout.cellH}px ${this.font}`
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    ctx.fillText('0', layout.cellW / 2, layout.cellH / 2)
-    ctx.fillText('1', layout.cellW / 2, layout.cellH + layout.cellH / 2)
+    for (let i = 0; i < chars.length; i++) {
+      ctx.fillText(chars[i], layout.cellW / 2, layout.cellH * i + layout.cellH / 2)
+    }
     this.atlas = atlas
     this.atlasKey = key
   }
@@ -186,20 +203,24 @@ export class AsciiPlayer {
     const { coverage, columns } = grid
     const { originX, originY, cellW, cellH } = layout
     const ctx = this.ctx
+    const ramp = this.glyphSet.mode === 'ramp'
     for (let row = row0; row < row1; row++) {
       for (let col = col0; col < col1; col++) {
         const amount = Math.min(255, coverage[row * columns + col] * this.gain)
         if (amount < 8) continue
         const weight = amount / 255
-        const scale = 0.42 + 0.7 * weight * weight
+        const slot = ramp
+          ? rampIndex(amount, this.glyphSet, this.glyphSet.id === 'mixed' ? glyphBit(col, row) * 2 - 1 : 0)
+          : glyphBit(col, row)
+        if (slot < 0) continue
+        const scale = ramp ? 0.82 + 0.18 * weight : 0.42 + 0.7 * weight * weight
         const dw = cellW * scale
         const dh = cellH * scale
-        ctx.globalAlpha = 0.28 + 0.72 * weight
-        const bit = glyphBit(col, row)
+        ctx.globalAlpha = ramp ? 0.4 + 0.6 * weight : 0.28 + 0.72 * weight
         ctx.drawImage(
           this.atlas,
           0,
-          bit * cellH,
+          slot * cellH,
           cellW,
           cellH,
           originX + col * cellW + shiftX + (cellW - dw) / 2,

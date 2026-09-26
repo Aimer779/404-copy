@@ -1,4 +1,4 @@
-import { AsciiPlayer, decodeAsciiClip, frameAt, loadAsciiClip, measureCharAspect } from '../src/index.mjs'
+import { AsciiPlayer, decodeAsciiClip, frameAt, loadAsciiClip, measureCharAspect } from '../src/index.mjs?v=17'
 import {
   agentPrompt,
   buildRecipe,
@@ -8,7 +8,7 @@ import {
   recipeClip,
   recipeFileName,
   retuneRecipe,
-} from '../src/recipe.mjs'
+} from '../src/recipe.mjs?v=17'
 
 const gray = document.querySelector('#gray')
 const ascii = document.querySelector('#ascii')
@@ -17,6 +17,7 @@ const columnsInput = document.querySelector('#columns')
 const frameInput = document.querySelector('#frame')
 const colorInput = document.querySelector('#color')
 const fontSelect = document.querySelector('#font')
+const glyphsSelect = document.querySelector('#glyphs')
 const fonts = {
   consolas: 'Consolas, ui-monospace, monospace',
   cascadia: '"Cascadia Mono", Consolas, ui-monospace, monospace',
@@ -82,6 +83,7 @@ function playTimeLook() {
   return {
     font: currentFont(),
     fontId: fontSelect.value,
+    glyphs: glyphsSelect.value,
     color: colorInput.value,
     mass: theme.mass,
     massId: theme === themes.dark ? 'dark' : 'light',
@@ -92,7 +94,7 @@ function playTimeLook() {
 function currentLook() {
   return {
     columns: Number(columnsInput.value),
-    charAspect: player?.charAspect || measureCharAspect(currentFont()),
+    charAspect: player?.charAspect || measureCharAspect(currentFont(), glyphsSelect.value === 'block' ? '█' : '0'),
     ink: 'auto',
     floor: 18,
     ...playTimeLook(),
@@ -139,6 +141,7 @@ function applyEditorLook(next) {
   player.color = next.look.color
   player.gain = next.look.gain ?? 1
   if (clip) player.setColumns(next.look.columns)
+  if (next.look.glyphs) player.setGlyphs(next.look.glyphs)
 }
 
 function readEditorRecipe() {
@@ -207,6 +210,10 @@ function applyLook(look) {
     syncColorHex()
   }
   if (look.fontId && fonts[look.fontId]) fontSelect.value = look.fontId
+  if (look.glyphs && glyphsSelect.querySelector(`[value="${look.glyphs}"]`)) {
+    glyphsSelect.value = look.glyphs
+    player?.setGlyphs(look.glyphs)
+  }
   if (look.columns) columnsInput.value = String(look.columns)
 }
 
@@ -340,6 +347,7 @@ function useClip(next, name) {
     columns: Number(columnsInput.value),
     charAspect: measureCharAspect(currentFont()),
     color: colorInput.value,
+    glyphs: glyphsSelect.value,
   })
   render()
 }
@@ -361,6 +369,7 @@ async function useRecipe(next, name) {
       charAspect: recipe.look.charAspect,
       color: colorInput.value,
       gain: recipe.look.gain,
+      glyphs: recipe.look.glyphs,
     })
     player.setBaked(hydrated)
     await applyFont()
@@ -372,6 +381,7 @@ async function useRecipe(next, name) {
     player.clearBaked()
     player.setColumns(recipe.look.columns)
     player.gain = recipe.look.gain ?? 1
+    if (recipe.look.glyphs) player.setGlyphs(recipe.look.glyphs)
     await applyFont()
     render()
     return
@@ -400,6 +410,13 @@ columnsInput.addEventListener('input', () => {
   }
 })
 fontSelect.addEventListener('change', () => { applyFont() })
+function applyGlyphs() {
+  if (!player || typeof player.setGlyphs !== 'function') return
+  player.setGlyphs(glyphsSelect.value)
+  render()
+}
+glyphsSelect.addEventListener('input', applyGlyphs)
+glyphsSelect.addEventListener('change', applyGlyphs)
 frameInput.addEventListener('pointerdown', () => { scrubbing = true })
 frameInput.addEventListener('pointerup', () => { scrubbing = false })
 frameInput.addEventListener('input', () => {

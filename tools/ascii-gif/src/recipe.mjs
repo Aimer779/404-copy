@@ -71,6 +71,7 @@ export function buildRecipe({ clip, look, sourceName = '' }) {
       floor: look.floor ?? 18,
       pixelColumns: clip.pixelColumns,
       aspect,
+      glyphs: look.glyphs || 'binary',
     },
     handoff: {
       entry: 'mount.mjs',
@@ -137,6 +138,7 @@ export function retuneRecipe(recipe, look) {
       massId: look.massId ?? parsed.look.massId,
       gain: look.gain ?? parsed.look.gain,
       columns: look.columns ?? parsed.look.columns,
+      glyphs: look.glyphs ?? parsed.look.glyphs,
     },
   }
 }
@@ -159,6 +161,7 @@ export function agentPrompt(recipe, fileName) {
 来源：${gifName}，${parsed.source?.width || '?'}×${parsed.source?.height || '?'}，${parsed.source?.frameCount || '?'} 帧
 画面：${look.columns} 列 × ${look.rows} 行
 字体：${look.font}
+字符：${look.glyphs || 'binary'}
 墨色：${look.color}
 底色：${look.mass}
 字符宽高比：${look.charAspect}

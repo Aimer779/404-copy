@@ -31,6 +31,7 @@ function playerOptions(look, options) {
     gain: options.gain ?? look.gain,
     ink: look.ink,
     floor: look.floor,
+    glyphs: options.glyphs || look.glyphs,
   }
 }
 

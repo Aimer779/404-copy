@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node build.mjs",
     "fixtures": "python test/make_fixtures.py",
-    "test": "node --test test/composite.test.mjs test/recipe.test.mjs"
+    "test": "node --test test/composite.test.mjs test/recipe.test.mjs test/glyphs.test.mjs"
   },
   "devDependencies": {
     "esbuild": "0.25.10",
